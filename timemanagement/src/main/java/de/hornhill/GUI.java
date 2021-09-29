@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 
 
-public class App extends Application {
+public class GUI extends Application {
 
 
 
