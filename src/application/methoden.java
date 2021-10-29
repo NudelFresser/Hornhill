@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class methoden
 {
-	private int arbeitszeit;
+
 	private long startStunde = 0;
 	private long startMinute = 0;
 	private long endeStunde = 0;
@@ -19,31 +19,15 @@ public class methoden
 	private long ArbeitmitPauseStunde = 0;
 	private long ArbeitmitPauseMinute = 0;
 	private long pausendauer = 0;
-	private int wochenstunden;
-	private long ueberstunden;
-	private long diff;
-	private long pStundeGesamt;
-	private long pMinuteGesamt;
-	private long pdiff;
-	private long stunde = 0;
-	private long minute = 0;
-	private long pstunde = 0;
-	private long pminute = 0;
-	private long astunde = 0;
-	private long aminute = 0;
 	private long pauseExtra = 0;
-	private Date anfangPause;
-	private Date endePause;
 	private long maxerlaubt = 0;
-	private int test;
+
 	
 	SampleController m1 = new SampleController();
 	//get und set Methoden
 	
 	
-	public int getTest() {
-		return test;
-	}
+
 	public void setStartStunde(String startzeit) {
 		startStunde = Long.parseLong(startzeit);
 	}
@@ -65,10 +49,6 @@ public class methoden
 	}
 	
 	
-	public void setAnfangPause(Date anfangPause) {
-		this.anfangPause = anfangPause;
-	}
-	
 	public String getStartStunde() {
 		String s = Long.toString(startStunde);
 		if(s.length() < 2) {
@@ -78,62 +58,26 @@ public class methoden
 		return s;
 	}
 	
-	public Date getAnfangPause() {
-		return anfangPause;
+	public String getPausenDauer() {
+		return Long.toString(pausendauer);
 	}
-	
-	public void setEndePause(Date endePause) {
-		this.endePause = endePause;
-	}
-	
-	public Date getEndePause() {
-		return endePause;
-	}
-	
-	public long getGearbeiteteStunde() {
-		return stunde;
-	}
-	
-	private long getGearbeiteteMinuten() {
-		return minute;
-	}
-	
-	public long getArbeitsStunden() {
-		return astunde;
-	}
-	
-	public long getArbeitsMinuten() {
-		return aminute;
-	}
-	
-	public long getPausenStunden() {
-		return pstunde;
-	}
-	
-	public long getPausenMinuten() {
-		return pminute;
-	}
-	
-	
-	public void setWochenstunden(int wochenstunden) {
-		this.wochenstunden = wochenstunden;
-	}
-	
-	public int getWochenstunden() {
-		return wochenstunden;
-	}
-	
-	public long getpStundeGesamt() {
-		return pStundeGesamt;
-	}
-	
-	public long getpMinuteGesamt() {
-		return pMinuteGesamt;
-	}
-	
+
 	public long getMaxErlaubt() {
 		return maxerlaubt;
 	}
+	
+	public String getZusatzPause() {
+		return Long.toString(pauseExtra);
+	}
+	
+	public long getArbeitmitPauseStunde() {
+		return ArbeitmitPauseStunde;
+	}
+	
+	public long getArbeitmitPauseMinute() {
+		return ArbeitmitPauseMinute;
+	}
+	
 	
 	public boolean unter18check() throws ParseException {
 		
@@ -184,7 +128,9 @@ public class methoden
 		
 		UserConfig u1 = new UserConfig();
 		int i =  Integer.parseInt(u1.getWorktime()); 
-		test = i;
+		if (unter18check() == true) {
+			i = 35;
+		}
 		switch(i) {
 		
 		
@@ -203,15 +149,16 @@ public class methoden
 	}
 	
 	public String MaxStundenErlaubt() throws ParseException {
-		//startStunde
-		//startMinute
-		//endeStunde
-		//endeMinute
-		//ergebnis
+	
+		//Dieses if-Statement exestieren, da die Betriebszeiten zwischen 06:00 und 22:00 liegen --> Davor oder Danach ist auﬂerhalb der Arbeitszeit
+		if(startStunde < 6) {
+			startStunde = 6;
+		}
 		
 		
 		long ergebnisStunde = startStunde + maxerlaubt;
 		long ergebnisMinute = startMinute + pauseExtra;
+		
 		
 		berechneArbeitszeitOhnePause();
 		
@@ -220,10 +167,6 @@ public class methoden
 			if(ArbeitohnePauseStunde >= 4 && ArbeitohnePauseStunde < 6 && ArbeitohnePauseMinute >= 30 ) {
 				ergebnisMinute = ergebnisMinute + 30;
 				pausendauer = 30;
-			}
-			else if(ArbeitohnePauseStunde >= 6) {
-				ergebnisStunde++;
-				pausendauer = 60;
 			}
 			
 		}
@@ -252,9 +195,7 @@ public class methoden
 			}
 		}
 		
-		if(ergebnisMinute < 0) {
-			ergebnisMinute = ergebnisMinute * (-1);
-		}
+		
 		
 		String s = Long.toString(ergebnisStunde);
 		String s2 = Long.toString(ergebnisMinute);
@@ -284,6 +225,14 @@ public class methoden
 	
 	
 	public void berechneArbeitszeitOhnePause() {
+		//Diese Zwei if Statements exestieren, da die Betriebszeiten zwischen 06:00 und 22:00 liegen --> Davor oder Danach ist auﬂerhalb der Arbeitszeit
+		if(startStunde < 6) {
+			startStunde = 6;
+		}
+		if(endeStunde > 22) {
+			endeStunde = 22;
+		}
+		
 		ArbeitohnePauseStunde = endeStunde - startStunde;
 		ArbeitohnePauseMinute = endeMinute - startMinute;
 	}
@@ -300,6 +249,11 @@ public class methoden
 		
 		ArbeitmitPauseStunde = ArbeitohnePauseStunde - pdauerStunden;
 		ArbeitmitPauseMinute = ArbeitohnePauseMinute - pdauerMinuten;
+		
+		if(ArbeitmitPauseMinute < 0) {
+			ArbeitmitPauseMinute = ArbeitmitPauseMinute + 60;
+			ArbeitmitPauseStunde--;
+		}
 		
 		String s = Long.toString(ArbeitmitPauseStunde);
 		String s2 = Long.toString(ArbeitmitPauseMinute);

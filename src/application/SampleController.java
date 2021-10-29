@@ -234,13 +234,13 @@ public class SampleController {
 
 		comboBoxBeginnStunden.getItems().addAll(Array.ganzeStunden);
 		comboBoxBeginnStunden.setVisibleRowCount(10);
-		comboBoxBeginnStunden.getSelectionModel().selectFirst();
+		comboBoxBeginnStunden.getSelectionModel().select("06");
 		comboBoxBeginnMinuten.getItems().addAll(Array.ganzeMinuten);
 		comboBoxBeginnMinuten.setVisibleRowCount(15);
 		comboBoxBeginnMinuten.getSelectionModel().selectFirst();
 		comboBoxEndeStunden.getItems().addAll(Array.ganzeStunden);
 		comboBoxEndeStunden.setVisibleRowCount(10);
-		comboBoxEndeStunden.getSelectionModel().selectFirst();
+		comboBoxEndeStunden.getSelectionModel().select("22");
 		comboBoxEndeMinuten.getItems().addAll(Array.ganzeMinuten);
 		comboBoxEndeMinuten.setVisibleRowCount(15);
 		comboBoxEndeMinuten.getSelectionModel().selectFirst();
@@ -282,9 +282,37 @@ public class SampleController {
 		});
 	}
 
-	public void newPersonButtonPushed(ActionEvent event) throws IOException {
+	public void newPersonButtonPushed(ActionEvent event) throws IOException, ParseException {
 		UserConfig uc = new UserConfig();
-
+		//Code von newZeitenBerechnung, da leider nicht weiﬂ wie ich die Methode hier aufrufen soll
+		methoden m1 = new methoden();
+		String s1 = comboBoxBeginnStunden.getSelectionModel().getSelectedItem();
+		String s2 = comboBoxBeginnMinuten.getSelectionModel().getSelectedItem();
+		String s3 = comboBoxEndeStunden.getSelectionModel().getSelectedItem();
+		String s4 = comboBoxEndeMinuten.getSelectionModel().getSelectedItem();
+		String s5 = textfieldZeiterfassungZusatzpause.getText();
+		if (s1 != null && s2 != null && s3 != null && s4 != null) {
+			m1.setStartStunde(s1);
+			m1.setStartMinute(s2);
+			m1.setEndeStunde(s3);
+			m1.setEndeMinute(s4);
+			m1.setPauseExtra(s5);
+			m1.MaxStundenErlaubt();
+			m1.AuswahlWochenStundenMaxErlaubt();
+			String result = m1.MaxStundenErlaubt();
+			textfieldZeiterfassungGesetzlichesmaximum.setText(result);
+			System.out.println(m1.berechneArbeitszeitMitPause());
+			
+	}
+		
+		if(m1.getArbeitmitPauseStunde() < 0 && m1.getArbeitmitPauseMinute() >= 0  || m1.getArbeitmitPauseStunde() == 0 && m1.getArbeitmitPauseMinute() == 0) {
+			textfieldZeiterfassungGesetzlichesmaximum.setText("You have to work at least 1 minute!");
+		}   else {
+			
+			
+			
+			
+			
 		if(checkboxZeiterfassungAbwesenheit.isSelected() && !comboBoxAbwesenheit.getSelectionModel().isEmpty() && vacationDatePicker.getValue() != null) {
 			if(uc.saveTime(vacationDatePicker.getValue(), comboBoxAbwesenheit.getSelectionModel().getSelectedItem(), "", "", "")) {
 				if (uc.getLanguage() == 1) {
@@ -310,6 +338,7 @@ public class SampleController {
 				ResourceBundle bundle = ResourceBundle.getBundle("bundles.language", locale);
 
 				JOptionPane.showMessageDialog(null, bundle.getString("joption.success"));
+				
 			}
 		}
 
@@ -317,9 +346,10 @@ public class SampleController {
 				&& !comboBoxBeginnMinuten.getSelectionModel().isEmpty()
 				&& !comboBoxEndeStunden.getSelectionModel().isEmpty()
 				&& !comboBoxEndeMinuten.getSelectionModel().isEmpty()) {
-
-
-			String pause = "30";
+			
+			
+			
+			String pause = m1.getPausenDauer();
 			String zusatzpause = "0";
 			String arbeitsbeginn = "";
 			String arbeitsende = "";
@@ -369,10 +399,11 @@ public class SampleController {
 					window.setScene(tableViewscene);
 					window.show();
 
+					
 					ResourceBundle bundle = ResourceBundle.getBundle("bundles.language", locale);
-
 					JOptionPane.showMessageDialog(null, bundle.getString("joption.success"));
-				}
+					
+					}
 			} else {
 				if (uc.getLanguage() == 1) {
 					locale = new Locale("en");
@@ -382,20 +413,25 @@ public class SampleController {
 					locale = new Locale("de");
 					Locale.setDefault(Locale.GERMAN);
 				}
+				
 				ResourceBundle bundle = ResourceBundle.getBundle("bundles.language", locale);
-
 				JOptionPane.showMessageDialog(null, bundle.getString("joption.zusatzpause"));
 
 			}
-
+			}
 		}
+		}
+	
+	
+		
+		
 
-	}
+	
 
 	public void newSettingButtonPushed(ActionEvent event) throws IOException {
 		UserConfig uc = new UserConfig();
 		boolean settingsChanged = false;
-
+		
 		if (!passwortfiedEinstellungenAltesPasswort.getText().equals("")
 				&& !passwortfiedEinstellungenNeuesPasswort1.getText().equals("")
 				&& !passwortfiedEinstellungenNeuesPasswort2.getText().equals("")
