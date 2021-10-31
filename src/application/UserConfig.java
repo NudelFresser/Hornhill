@@ -955,4 +955,109 @@ public class UserConfig
 		return un;
 	}
 
+	public String[] getDayData(LocalDate date)
+	{
+
+		String[] begin = {"", "", "", ""};
+
+		int day = date.getDayOfMonth();
+		int month = date.getMonthValue();
+		int year = date.getYear();
+
+		String dayString = "";
+		String monthString = "";
+		String yearString = "";
+
+		yearString = String.valueOf(year);
+
+		if (month < 10)
+		{
+			monthString = String.format("%02d", month);
+		}
+		else
+		{
+			monthString = String.valueOf(month);
+		}
+
+		if (day < 10)
+		{
+			dayString = String.format("%02d", day);
+		}
+		else
+		{
+			dayString = String.valueOf(day);
+		}
+
+		openFile(FILENAMETIME);
+
+		NodeList listOfUser = doc.getElementsByTagName("worktime");
+
+		for (int i = 0; i < listOfUser.getLength(); i++)
+		{
+
+			Node user = listOfUser.item(i);
+
+			if (user.getNodeType() == Node.ELEMENT_NODE)
+			{
+
+				NodeList childNodes = user.getChildNodes();
+
+				for (int j = 0; j < childNodes.getLength(); j++)
+				{
+					Node item = childNodes.item(j);
+
+					if (item.getNodeType() == Node.ELEMENT_NODE && item.getAttributes().getNamedItem("name").getNodeValue().equals(yearString))
+					{
+
+						NodeList monthNodes = item.getChildNodes();
+
+						for (int k = 0; k < monthNodes.getLength(); k++)
+						{
+							Node monthItem = monthNodes.item(k);
+							if (monthItem.getNodeType() == Node.ELEMENT_NODE && monthItem.getAttributes().getNamedItem("name").getNodeValue().equals(monthString))
+							{
+
+								NodeList dayNodes = monthItem.getChildNodes();
+
+								for (int u = 0; u < dayNodes.getLength(); u++)
+								{
+									Node dayItem = dayNodes.item(u);
+									if (dayItem.getNodeType() == Node.ELEMENT_NODE && dayItem.getAttributes().getNamedItem("name").getNodeValue().equals(dayString))
+									{
+
+										NodeList timeNodes = dayItem.getChildNodes();
+
+										for (int v = 0; v < timeNodes.getLength(); v++)
+										{
+											Node timeItem = timeNodes.item(v);
+
+											if ("begin".equalsIgnoreCase(timeItem.getNodeName()))
+											{
+												begin[0] = timeItem.getTextContent();
+											}
+											if ("end".equalsIgnoreCase(timeItem.getNodeName()))
+											{
+												begin[1] = timeItem.getTextContent();
+											}
+											if ("break".equalsIgnoreCase(timeItem.getNodeName()))
+											{
+												begin[2] = timeItem.getTextContent();
+											}
+											if ("extra".equalsIgnoreCase(timeItem.getNodeName()))
+											{
+												begin[3] = timeItem.getTextContent();
+											}
+
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return begin;
+	}
+
 }

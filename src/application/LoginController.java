@@ -1,5 +1,6 @@
 package application;
 
+
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -31,6 +32,7 @@ public class LoginController {
 	@FXML
 	private PasswordField textfieldPasswort;
 
+
 	@FXML
 	void initialize() {
 		assert labelNutzername != null : "fx:id=\"labelNutzername\" was not injected: check your FXML file 'Login.fxml'.";
@@ -47,16 +49,16 @@ public class LoginController {
 			if(uc.getLanguage() == 1)
 			{
 				Locale.setDefault(Locale.ENGLISH);
-			} 
+			}
 			if(uc.getLanguage() == 0)
 			{
 				Locale.setDefault(Locale.GERMAN);
 			}
-			
+
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("Sample.fxml"));
 			loader.setResources(ResourceBundle.getBundle("bundles.language", Array.locale));
-			
+
 			Parent root = loader.load();
 
 			Scene tableViewscene = new Scene(root);
@@ -67,9 +69,9 @@ public class LoginController {
 		else {
 			textfieldNutzername.setText("");
 			textfieldPasswort.setText("");
-			
+
 			ResourceBundle bundle = ResourceBundle.getBundle("bundles.language", Array.locale);
-			
+
 			JOptionPane.showMessageDialog(null,bundle.getString("joption.login"));
 
 		}
@@ -81,7 +83,7 @@ public class LoginController {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("Registrierung.fxml"));
 		loader.setResources(ResourceBundle.getBundle("bundles.language", Array.locale));
-		
+
 		Parent root = loader.load();
 
 		Scene tableViewscene = new Scene(root);

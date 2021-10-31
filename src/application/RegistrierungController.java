@@ -87,6 +87,33 @@ public class RegistrierungController
 		Locale.setDefault(Locale.GERMAN);
 	}
 
+	public void alterBerechnen() {
+
+		String[] stunden = { "30", "35", "40" };
+		String unter18 = "35";
+
+
+			LocalDate d1 = datepickerRegistrierungGeburtsdatum.getValue();
+			LocalDate d2 = LocalDate.now();
+
+			int geburtsjahr = d1.getYear();
+			int aktuellesJahr = d2.getYear();
+			int differenz = aktuellesJahr - geburtsjahr;
+
+			if (differenz < 18 && differenz > 16) {
+				comboboxRegistrierungWochenarbeitszeit.getItems().removeAll(stunden);
+				comboboxRegistrierungWochenarbeitszeit.getItems().addAll(unter18);
+			} else if (differenz > 18) {
+				comboboxRegistrierungWochenarbeitszeit.getItems().removeAll(unter18);
+				comboboxRegistrierungWochenarbeitszeit.getItems().addAll(stunden);
+			} else {
+				comboboxRegistrierungWochenarbeitszeit.getItems().removeAll(stunden);
+			}
+
+
+
+	}
+
     public void switchToLogin(ActionEvent event) throws IOException
 	{
     	UserConfig uc = new UserConfig();
@@ -98,7 +125,7 @@ public class RegistrierungController
     						.equals(passwortfeldRegistrierungPasswortwiederholen.getText())
     					&& comboboxRegistrierungWochenarbeitszeit.getSelectionModel().getSelectedItem() != null)
     				{
-			    	
+
     					ResourceBundle bundle = ResourceBundle.getBundle("bundles.language", Array.locale);
     					JOptionPane.showMessageDialog(null, bundle.getString("joption.passpass"));
     				}

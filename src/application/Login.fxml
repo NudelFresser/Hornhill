@@ -28,14 +28,19 @@
             <Image url="@Logo.PNG" />
          </image>
       </ImageView>
-      <Button layoutX="126.0" layoutY="298.0" mnemonicParsing="false" onAction="#switchToZeiterfassung" prefHeight="44.0" prefWidth="134.0" text="%button.login">
+      <Button layoutX="126.0" layoutY="298.0" mnemonicParsing="false" onAction="#switchToZeiterfassung" prefHeight="44.0" prefWidth="168.0" text="%button.login">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="397.0" layoutY="298.0" mnemonicParsing="false" onAction="#switchToRegistration" text="%button.signup">
+      <Button layoutX="356.0" layoutY="298.0" mnemonicParsing="false" onAction="#switchToRegistration" prefWidth="168.0" text="%button.signup">
          <font>
             <Font size="20.0" />
+         </font>
+      </Button>
+         <Button fx:id="buttonLoginPasswortVergessen" layoutX="126.0" layoutY="362.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="168.0" text="%button.passwordforgotten">
+         <font>
+            <Font size="14.0" />
          </font>
       </Button>
    </children>

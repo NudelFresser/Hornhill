@@ -199,6 +199,18 @@ public class SampleController {
 	private ComboBox<String> comboBoxAbwesenheit;
 
 	@FXML
+	private ComboBox<String> comboBoxKalenderMonatsauswahl;
+
+	@FXML
+	private ComboBox<String> comboBoxKalenderQuartalsauswahl;
+
+	@FXML
+	private ComboBox<String> comboBoxKalenderJahresauswahl;
+
+	@FXML
+	private Button buttonBerechneZeit;
+
+	@FXML
 	void initialize() {
 		assert labelZeiterfassungTag != null : "fx:id=\"labelZeiterfassungTag\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert labelZeiterfassungArbeitsbeginn != null : "fx:id=\"labelZeiterfassungArbeitsbeginn\" was not injected: check your FXML file 'Sample.fxml'.";
@@ -230,7 +242,26 @@ public class SampleController {
 		assert labelEinstellungenNeuesPasswort2 != null : "fx:id=\"labelEinstellungenNeuesPasswort2\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert passwortfiedEinstellungenNeuesPasswort2 != null : "fx:id=\"passwortfiedEinstellungenNeuesPasswort2\" was not injected: check your FXML file 'Sample.fxml'.";
 
-		choiceBoxEinstellungenWochenarbeitszeit.getItems().addAll(Array.stunden);
+
+		// Hinterleger der Wochenarbeitszeitstunden bei Minderj‰hrigen und Vollj‰hrigen
+		methoden md = new methoden();
+
+		try {
+			if (md.unter18check() == true) {
+				choiceBoxEinstellungenWochenarbeitszeit.getItems().removeAll(Array.stunden);
+				choiceBoxEinstellungenWochenarbeitszeit.getItems().addAll(Array.unter18);
+			} else {
+				choiceBoxEinstellungenWochenarbeitszeit.getItems().removeAll(Array.unter18);
+				choiceBoxEinstellungenWochenarbeitszeit.getItems().addAll(Array.stunden);
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		comboBoxKalenderMonatsauswahl.getItems().addAll(Array.monate);
+		comboBoxKalenderQuartalsauswahl.getItems().addAll(Array.quartale);
+		comboBoxKalenderJahresauswahl.getItems().addAll(Array.jahre);
 
 		comboBoxBeginnStunden.getItems().addAll(Array.ganzeStunden);
 		comboBoxBeginnStunden.setVisibleRowCount(10);
@@ -282,6 +313,28 @@ public class SampleController {
 		});
 	}
 
+	public void berechneZeit() {
+		//UserConfig uc = new UserConfig();
+
+		if(!comboBoxKalenderMonatsauswahl.getSelectionModel().isEmpty()) {
+			//String monat = comboBoxKalenderMonatsauswahl.getSelectionModel().getSelectedItem();
+
+			textfieldKalenderMonatsStunden.setText("0");
+		}
+
+		if(!comboBoxKalenderQuartalsauswahl.getSelectionModel().isEmpty()) {
+			//String quartal = comboBoxKalenderQuartalsauswahl.getSelectionModel().getSelectedItem();
+
+			textfieldKalenderQuartalsStunden.setText("0");
+		}
+
+		if(!comboBoxKalenderJahresauswahl.getSelectionModel().isEmpty()) {
+			//String jahr = comboBoxKalenderJahresauswahl.getSelectionModel().getSelectedItem();
+
+			textfieldKalenderJahresStunden.setText("0");
+		}
+	}
+
 	public void newPersonButtonPushed(ActionEvent event) throws IOException, ParseException {
 		UserConfig uc = new UserConfig();
 		//Code von newZeitenBerechnung, da leider nicht weiﬂ wie ich die Methode hier aufrufen soll
@@ -302,17 +355,17 @@ public class SampleController {
 			String result = m1.MaxStundenErlaubt();
 			textfieldZeiterfassungGesetzlichesmaximum.setText(result);
 			System.out.println(m1.berechneArbeitszeitMitPause());
-			
+
 	}
-		
+
 		if(m1.getArbeitmitPauseStunde() < 0 && m1.getArbeitmitPauseMinute() >= 0  || m1.getArbeitmitPauseStunde() == 0 && m1.getArbeitmitPauseMinute() == 0) {
 			textfieldZeiterfassungGesetzlichesmaximum.setText("You have to work at least 1 minute!");
 		}   else {
-			
-			
-			
-			
-			
+
+
+
+
+
 		if(checkboxZeiterfassungAbwesenheit.isSelected() && !comboBoxAbwesenheit.getSelectionModel().isEmpty() && vacationDatePicker.getValue() != null) {
 			if(uc.saveTime(vacationDatePicker.getValue(), comboBoxAbwesenheit.getSelectionModel().getSelectedItem(), "", "", "")) {
 				if (uc.getLanguage() == 1) {
@@ -338,7 +391,7 @@ public class SampleController {
 				ResourceBundle bundle = ResourceBundle.getBundle("bundles.language", locale);
 
 				JOptionPane.showMessageDialog(null, bundle.getString("joption.success"));
-				
+
 			}
 		}
 
@@ -346,9 +399,9 @@ public class SampleController {
 				&& !comboBoxBeginnMinuten.getSelectionModel().isEmpty()
 				&& !comboBoxEndeStunden.getSelectionModel().isEmpty()
 				&& !comboBoxEndeMinuten.getSelectionModel().isEmpty()) {
-			
-			
-			
+
+
+
 			String pause = m1.getPausenDauer();
 			String zusatzpause = "0";
 			String arbeitsbeginn = "";
@@ -399,10 +452,10 @@ public class SampleController {
 					window.setScene(tableViewscene);
 					window.show();
 
-					
+
 					ResourceBundle bundle = ResourceBundle.getBundle("bundles.language", locale);
 					JOptionPane.showMessageDialog(null, bundle.getString("joption.success"));
-					
+
 					}
 			} else {
 				if (uc.getLanguage() == 1) {
@@ -413,7 +466,7 @@ public class SampleController {
 					locale = new Locale("de");
 					Locale.setDefault(Locale.GERMAN);
 				}
-				
+
 				ResourceBundle bundle = ResourceBundle.getBundle("bundles.language", locale);
 				JOptionPane.showMessageDialog(null, bundle.getString("joption.zusatzpause"));
 
@@ -421,17 +474,17 @@ public class SampleController {
 			}
 		}
 		}
-	
-	
-		
-		
 
-	
+
+
+
+
+
 
 	public void newSettingButtonPushed(ActionEvent event) throws IOException {
 		UserConfig uc = new UserConfig();
 		boolean settingsChanged = false;
-		
+
 		if (!passwortfiedEinstellungenAltesPasswort.getText().equals("")
 				&& !passwortfiedEinstellungenNeuesPasswort1.getText().equals("")
 				&& !passwortfiedEinstellungenNeuesPasswort2.getText().equals("")
