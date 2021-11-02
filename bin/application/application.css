@@ -1,12 +1,126 @@
-.table-cell.name-column {
-    -fx-background-color: palegreen;
-}
- 
-.table-view .column-header.name-column {
-    -fx-base: palegreen;
-}
-
 .root {
 	-fx-background-color: white;
-	
+}
+
+.label {
+	-fx-font-family: "Arial Nova";
+}
+
+.text-field {
+	-fx-font-family: "Arial Nova";
+	-fx-border-color: #555555;
+}
+
+.text-field:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+
+.text-field:pressed, .button:default {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+
+.button {
+	-fx-border-width: 1.5px;
+	-fx-border-color: black;
+	-fx-background-radius: 12px;
+	-fx-border-radius: 10px;
+	-fx-background-color: white;
+	-fx-text-fill: black;
+}
+
+.button:hover {
+	-fx-background-color: #DFDFDF;
+	-fx-border-color: black;
+	-fx-text-fill: black;
+}
+
+.choice-box {
+  -fx-border-width: 1px;
+  -fx-border-color: black;
+  -fx-background-radius: 0px;
+  -fx-background-color: white;
+  -fx-mark-color: black;
+}
+
+.choice-box:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+
+
+.choice-box .menu-item:focused{
+	-fx-background-color: #DFDFDF;
+	-fx-text-fill: black;
+}
+
+.choice-box .menu-item:focused > .label {
+	-fx-text-fill: black;
+}
+
+.radio-button .radio {
+	-fx-background-color: white; 
+	-fx-border-color: #15171c;
+	-fx-background-radius: 140px;
+    -fx-border-radius: 130px;
+}
+
+.radio-button:hover .radio{
+	-fx-background-color: #FAFAFA;
+}
+
+.radio-button:selected .radio {
+	-fx-background-color: #C1C1C1; 
+	-fx-border-color: #15171c;
+	-fx-background-radius: 140px;
+    -fx-border-radius: 130px;
+}
+
+
+.date-picker .arrow-button {
+	-fx-background-radius: 0;
+	-fx-background-color: #DFDFDF;
+}
+.date-picker .text-field {
+    -fx-background-color: white;
+}
+
+.date-picker:hover .text-field {
+	-fx-background-color: #FAFAFA;
+}
+
+.date-picker .button{
+	-fx-background-color: #ededed;
+	-fx-border-style: solid;
+	-fx-border-color: transparent;
+	-fx-border-width: 1;
+}
+
+.date-picker .button:hover{
+	-fx-background-color: #DFDFDF;
+	-fx-border-style: solid;
+	-fx-border-color: black;
+	-fx-border-width: 1;
+}
+
+.date-picker-popup  {
+	-fx-border-color: transparent;
+}
+.date-picker-popup .month-year-pane {
+	-fx-background-color: #DFDFDF;
+}
+.date-picker-popup .month-year-pane .label {
+	-fx-text-fill: black;
+	-fx-font-family: "Arial Nova";
+}
+
+.date-picker .cell:hover {
+	-fx-background-color: #DFDFDF;
+	-fx-text-fill: black;
+	-fx-border-color: black;
+}
+.date-picker .cell:focused {
+	-fx-background-color: #DFDFDF;
+	-fx-text-fill: black;
 }

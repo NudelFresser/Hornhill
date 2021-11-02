@@ -63,6 +63,7 @@ public class LoginController {
 
 			Scene tableViewscene = new Scene(root);
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			tableViewscene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
 			window.setScene(tableViewscene);
 			window.show();
 		}
@@ -88,6 +89,7 @@ public class LoginController {
 
 		Scene tableViewscene = new Scene(root);
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		tableViewscene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		window.setScene(tableViewscene);
 		window.show();
 	}

@@ -181,6 +181,7 @@ public class RegistrierungController
 
 					Scene tableViewscene = new Scene(root);
 					Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					tableViewscene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 					window.setScene(tableViewscene);
 					window.show();
 				}

@@ -375,6 +375,7 @@ public class SampleController {
 
 				Scene tableViewscene = new Scene(root);
 				Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				tableViewscene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
 				window.setScene(tableViewscene);
 				window.show();
 
@@ -441,6 +442,7 @@ public class SampleController {
 
 					Scene tableViewscene = new Scene(root);
 					Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					tableViewscene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
 					window.setScene(tableViewscene);
 					window.show();
 
@@ -543,6 +545,7 @@ public class SampleController {
 
 			Scene tableViewscene = new Scene(root);
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			tableViewscene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
 			window.setScene(tableViewscene);
 			window.show();
 		}
@@ -561,6 +564,7 @@ public class SampleController {
 
 			Scene tableViewscene = new Scene(root);
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			tableViewscene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
 			window.setScene(tableViewscene);
 			window.show();
 		}
@@ -730,7 +734,7 @@ public class SampleController {
 				vacationDatePicker.setVisible(true);
 				if (comboBoxAbwesenheit.getItems().isEmpty()) {
 					comboBoxAbwesenheit.getItems().addAll(Array.abwesenheitEN);
-					comboBoxAbwesenheit.getSelectionModel().select("Vacation");
+					comboBoxAbwesenheit.getSelectionModel().select("vacation");
 				}
 
 			} else {
