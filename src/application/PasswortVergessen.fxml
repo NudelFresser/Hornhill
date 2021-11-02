@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PasswortVergessenController">
+   <children>
+      <Button fx:id="buttonDatenUeberpruefen" layoutX="50.0" layoutY="309.0" onAction="#checkPassword" mnemonicParsing="false" prefHeight="44.0" prefWidth="205.0" text="%button.forgottPasswort" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="50.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonZurueckZuLogin" layoutX="381.0" layoutY="309.0" mnemonicParsing="false" onAction="#switchBack" prefHeight="44.0" prefWidth="205.0" text="%button.switchBack" AnchorPane.bottomAnchor="47.0" AnchorPane.rightAnchor="30.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <DatePicker fx:id="datepickerGeburtstagseingabe" layoutX="359.0" layoutY="111.0" prefHeight="31.0" prefWidth="249.0" AnchorPane.leftAnchor="321.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="111.0" />
+      <Label fx:id="labeleburtstagseingabe" layoutX="66.0" layoutY="111.0" text="%label.enterBirthday" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="111.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

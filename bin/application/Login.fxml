@@ -11,37 +11,42 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
-      <Label fx:id="labelNutzername" layoutX="197.0" layoutY="40.0" prefHeight="38.0" prefWidth="126.0" text="%label.username">
+      <Label fx:id="labelNutzername" layoutX="197.0" layoutY="40.0" prefHeight="38.0" prefWidth="126.0" text="%label.username" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="277.0" AnchorPane.topAnchor="40.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="labelPasswort" layoutX="197.0" layoutY="131.0" prefHeight="38.0" prefWidth="126.0" text="%label.password">
+      <Label fx:id="labelPasswort" layoutX="197.0" layoutY="131.0" prefHeight="38.0" prefWidth="126.0" text="%label.password" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="277.0" AnchorPane.topAnchor="131.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="textfieldNutzername" layoutX="197.0" layoutY="78.0" prefHeight="38.0" prefWidth="245.0" promptText="%text.username" />
-      <PasswordField fx:id="textfieldPasswort" layoutX="197.0" layoutY="169.0" prefHeight="38.0" prefWidth="245.0" promptText="%text.password" />
-      <ImageView fitHeight="116.0" fitWidth="162.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="textfieldNutzername" layoutX="197.0" layoutY="78.0" prefHeight="38.0" prefWidth="245.0" promptText="%text.username" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="78.0" />
+      <PasswordField fx:id="textfieldPasswort" layoutX="197.0" layoutY="169.0" prefHeight="38.0" prefWidth="245.0" promptText="%text.password" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="169.0" />
+      <ImageView fitHeight="116.0" fitWidth="162.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@Logo.PNG" />
          </image>
       </ImageView>
-      <Button layoutX="126.0" layoutY="298.0" mnemonicParsing="false" onAction="#switchToZeiterfassung" prefHeight="44.0" prefWidth="168.0" text="%button.login">
+      <Button layoutX="126.0" layoutY="298.0" mnemonicParsing="false" onAction="#switchToZeiterfassung" prefHeight="44.0" prefWidth="168.0" text="%button.login" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="160.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="356.0" layoutY="298.0" mnemonicParsing="false" onAction="#switchToRegistration" prefWidth="168.0" text="%button.signup">
+      <Button layoutX="312.0" layoutY="298.0" mnemonicParsing="false" onAction="#switchToRegistration" prefWidth="168.0" text="%button.signup" AnchorPane.bottomAnchor="58.0" AnchorPane.rightAnchor="90.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-         <Button fx:id="buttonLoginPasswortVergessen" layoutX="126.0" layoutY="362.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="168.0" text="%button.passwordforgotten">
+         <Button fx:id="buttonLoginPasswortVergessen" layoutX="312.0" layoutY="356.0" mnemonicParsing="false" onAction="#switchToPasswortVergessen" prefHeight="23.0" prefWidth="168.0" text="%button.passwordforgotten" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="90.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <ImageView fitHeight="126.0" fitWidth="150.0" layoutX="442.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@hornhill_logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

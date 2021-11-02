@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -84,32 +85,31 @@ public class RegistrierungController
 
 		comboboxRegistrierungWochenarbeitszeit.getItems().addAll(Array.stunden);
 		datepickerRegistrierungGeburtsdatum.setEditable(false);
-		Locale.setDefault(Locale.GERMAN);
+		//Locale.setDefault(Locale.GERMAN);
 	}
 
-	public void alterBerechnen() {
+    public void alterBerechnen() throws ParseException {
+		methoden m1 = new methoden();
 
-		String[] stunden = { "30", "35", "40" };
-		String unter18 = "35";
+		try {
 
+			int alter = m1.unter18check(datepickerRegistrierungGeburtsdatum.getValue());
 
-			LocalDate d1 = datepickerRegistrierungGeburtsdatum.getValue();
-			LocalDate d2 = LocalDate.now();
-
-			int geburtsjahr = d1.getYear();
-			int aktuellesJahr = d2.getYear();
-			int differenz = aktuellesJahr - geburtsjahr;
-
-			if (differenz < 18 && differenz > 16) {
-				comboboxRegistrierungWochenarbeitszeit.getItems().removeAll(stunden);
-				comboboxRegistrierungWochenarbeitszeit.getItems().addAll(unter18);
-			} else if (differenz > 18) {
-				comboboxRegistrierungWochenarbeitszeit.getItems().removeAll(unter18);
-				comboboxRegistrierungWochenarbeitszeit.getItems().addAll(stunden);
+			if (alter == 1) {
+				comboboxRegistrierungWochenarbeitszeit.getItems().removeAll(Array.stunden);
+				comboboxRegistrierungWochenarbeitszeit.getItems().addAll(Array.unter18);
+			} else if (alter == 2) {
+				comboboxRegistrierungWochenarbeitszeit.getItems().removeAll(Array.stunden);
+				comboboxRegistrierungWochenarbeitszeit.getItems().addAll(Array.stunden);
 			} else {
-				comboboxRegistrierungWochenarbeitszeit.getItems().removeAll(stunden);
+				comboboxRegistrierungWochenarbeitszeit.getItems().removeAll(Array.stunden);
 			}
-
+		}
+		catch (ParseException  | IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			comboboxRegistrierungWochenarbeitszeit.getItems().removeAll(Array.stunden);
+			e.printStackTrace();
+		}
 
 
 	}

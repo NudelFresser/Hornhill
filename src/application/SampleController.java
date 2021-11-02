@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+//import com.sun.javafx.scene.control.skin.TableViewSkin;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -248,15 +250,16 @@ public class SampleController {
 		methoden md = new methoden();
 
 		try {
-			if (md.unter18check() == true) {
+			if (md.unter18check() == 1) {
 				choiceBoxEinstellungenWochenarbeitszeit.getItems().removeAll(Array.stunden);
 				choiceBoxEinstellungenWochenarbeitszeit.getItems().addAll(Array.unter18);
 			} else {
 				choiceBoxEinstellungenWochenarbeitszeit.getItems().removeAll(Array.unter18);
 				choiceBoxEinstellungenWochenarbeitszeit.getItems().addAll(Array.stunden);
 			}
-		} catch (ParseException e) {
+		} catch (ParseException  | IllegalArgumentException e) {
 			// TODO Auto-generated catch block
+			choiceBoxEinstellungenWochenarbeitszeit.getItems().removeAll(Array.stunden);
 			e.printStackTrace();
 		}
 
@@ -285,6 +288,8 @@ public class SampleController {
 				.setCellValueFactory(new PropertyValueFactory<person, SimpleStringProperty>("Arbeitsende"));
 		tablecolumnKalenderZusatzpause
 				.setCellValueFactory(new PropertyValueFactory<person, SimpleStringProperty>("Pause"));
+		tablecolumnKalenderGleitzeit
+		.setCellValueFactory(new PropertyValueFactory<person, SimpleStringProperty>("Overtime"));
 
 		birthdayDatePicker.setEditable(false);
 
@@ -362,13 +367,10 @@ public class SampleController {
 			m1.AuswahlWochenStundenMaxErlaubt();
 			String result = m1.MaxStundenErlaubt();
 			textfieldZeiterfassungGesetzlichesmaximum.setText(result);
-			System.out.println(m1.berechneArbeitszeitMitPause());
+			//System.out.println(m1.berechneArbeitszeitMitPause());
 
 	}
 
-		if(m1.getArbeitmitPauseStunde() < 0 && m1.getArbeitmitPauseMinute() >= 0  || m1.getArbeitmitPauseStunde() == 0 && m1.getArbeitmitPauseMinute() == 0) {
-			textfieldZeiterfassungGesetzlichesmaximum.setText("You have to work at least 1 minute!");
-		}   else {
 
 
 
@@ -440,6 +442,11 @@ public class SampleController {
 			}
 			if (pausenummer) {
 				if (uc.saveTime(date, arbeitsbeginn, arbeitsende, pause, zusatzpause)) {
+
+
+					String overtime = gleitzeitTag(date)/60+":"+gleitzeitTag(date)%60;
+					uc.writeOvertime(date, overtime);
+
 					if (uc.getLanguage() == 1) {
 						locale = new Locale("en");
 						Locale.setDefault(Locale.ENGLISH);
@@ -481,7 +488,7 @@ public class SampleController {
 			}
 			}
 		}
-		}
+
 
 
 
@@ -749,6 +756,7 @@ public class SampleController {
 				vacationDatePicker.setVisible(true);
 				if (comboBoxAbwesenheit.getItems().isEmpty()) {
 					comboBoxAbwesenheit.getItems().addAll(Array.abwesenheitEN);
+					comboBoxAbwesenheit.getSelectionModel().select("Vacation");
 				}
 
 			} else {
@@ -758,6 +766,7 @@ public class SampleController {
 				vacationDatePicker.setVisible(true);
 				if (comboBoxAbwesenheit.getItems().isEmpty()) {
 					comboBoxAbwesenheit.getItems().addAll(Array.abwesenheitDE);
+					comboBoxAbwesenheit.getSelectionModel().select("Urlaub");
 				}
 
 			}
@@ -811,7 +820,7 @@ public class SampleController {
 			m1.AuswahlWochenStundenMaxErlaubt();
 			String result = m1.MaxStundenErlaubt();
 			textfieldZeiterfassungGesetzlichesmaximum.setText(result);
-			System.out.println(m1.berechneArbeitszeitMitPause());
+			//System.out.println(m1.berechneArbeitszeitMitPause());
 			// 1Zeile drüber raus
 		}
 	}
@@ -827,7 +836,7 @@ public class SampleController {
 		if(gleitzeitJahr<0) {
 			gleitzeitJahr =gleitzeitJahr *(-1);
 			textfieldKalenderJahresStunden.setText("-"+gleitzeitJahr/60+":"+gleitzeitJahr%60);
-			
+
 		}else {
 			textfieldKalenderJahresStunden.setText(""+gleitzeitJahr/60+":"+gleitzeitJahr%60);
 		}
@@ -871,12 +880,12 @@ public class SampleController {
 		if(gleitzeitQuartal<0) {
 			gleitzeitQuartal =gleitzeitQuartal *(-1);
 			textfieldKalenderQuartalsStunden.setText("-"+gleitzeitQuartal/60+":"+gleitzeitQuartal%60);
-			
+
 		}else {
 			textfieldKalenderQuartalsStunden.setText(""+gleitzeitQuartal/60+":"+gleitzeitQuartal%60);
 		}
 	}
-	
+
 	public int schreibeGleitzeitMonat(ActionEvent event) throws IOException,ParseException {
 		String month =""+LocalDate.now().getMonthValue();
 		if(comboBoxKalenderMonatsauswahl.getSelectionModel().getSelectedItem() != null) {
@@ -892,34 +901,34 @@ public class SampleController {
 			gleitzeitMonat =gleitzeitMonat *(-1);
 			textfieldKalenderMonatsStunden.setText("-"+gleitzeitMonat/60+":"+gleitzeitMonat%60);
 			gleitzeitMonat =gleitzeitMonat *(-1);
-			
+
 		}else {
 			textfieldKalenderMonatsStunden.setText(""+gleitzeitMonat/60+":"+gleitzeitMonat%60);
 		}
 		return gleitzeitMonat;
-		
+
 	}
 	public int gleitzeitMonat(int year, int m) throws ParseException {
-		
+
 		YearMonth yearMonthObject = YearMonth.of(year, m);
-		int daysInMonth = yearMonthObject.lengthOfMonth(); //28 
+		int daysInMonth = yearMonthObject.lengthOfMonth(); //28
 		int gleitzeitMonat = 0;
-		
+
 		for(int i =1;i<=daysInMonth;i++) {
 		LocalDate date = LocalDate.of(year,m, i);
 		gleitzeitMonat += gleitzeitTag(date);
 		}
 		return gleitzeitMonat;
-		
+
 	}
 
 	public int gleitzeitTag(LocalDate d) throws ParseException {
 		methoden m2 = new methoden();
 		UserConfig uc = new UserConfig();
 		String[] gz = uc.getDayData(d);
-
+		try {
 		if(gz[0] != "") {
-		
+
 		m2.setStartStunde(gz[0].split(":")[0]);
 		m2.setStartMinute(gz[0].split(":")[1]);
 		m2.setEndeStunde(gz[1].split(":")[0]);
@@ -930,11 +939,17 @@ public class SampleController {
 		m2.MaxStundenErlaubt();
 		String[] str = m2.berechneArbeitszeitMitPause().split(":");
 		int zeit = Integer.parseInt(str[0])*60+Integer.parseInt(str[1]);
-		zeit = zeit - ((Integer.parseInt(uc.getWorktime())/5)*60);
-		return zeit;
-		
+
+			zeit = zeit - ((Integer.parseInt(uc.getWorktime())/5)*60);
+			return zeit;
+		}
+		} catch(NumberFormatException e) {
+			return 0;
 		}
 		return 0;
 
 	}
+
+
+
 }

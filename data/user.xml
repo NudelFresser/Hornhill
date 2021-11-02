@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><user>
-    <username>c</username>  
-    <password>c</password>
-    <birthdate>25.10.1996</birthdate>
+    <username>a</username>  
+    <password>b</password>
+    <birthdate>12.11.2001</birthdate>
     <language>e</language>    
-    <worktime>35</worktime>
-	<firstWarning>1</firstWarning>
-	<secondWarning>2</secondWarning>
+    <worktime>40</worktime>
+	<firstWarning/>
+	<secondWarning/>
 </user>

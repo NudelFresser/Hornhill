@@ -24,65 +24,65 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="labelZeiterfassungTag" layoutX="29.0" layoutY="25.0" text="%label.day">
+                  <Label fx:id="labelZeiterfassungTag" layoutX="29.0" layoutY="25.0" text="%label.day" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="25.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="birthdayDatePicker" layoutX="379.0" layoutY="25.0" prefHeight="31.0" prefWidth="357.0" />
-                  <Label fx:id="labelZeiterfassungArbeitsbeginn" layoutX="29.0" layoutY="65.0" text="%label.startwork">
+                  <DatePicker fx:id="birthdayDatePicker" layoutX="379.0" layoutY="25.0" prefHeight="31.0" prefWidth="407.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="25.0" />
+                  <Label fx:id="labelZeiterfassungArbeitsbeginn" layoutX="29.0" layoutY="65.0" text="%label.startwork" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="65.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="comboBoxBeginnStunden" layoutX="379.0" layoutY="69.0" onAction="#newZeitenBerechnung" prefHeight="25.0" prefWidth="168.0" />
-                  <ComboBox fx:id="comboBoxBeginnMinuten" layoutX="568.0" layoutY="69.0" onAction="#newZeitenBerechnung" prefHeight="25.0" prefWidth="168.0" />
-                  <Label fx:id="labelZeiterfassungGesetzlichesmaximum" layoutX="29.0" layoutY="110.0" text="%label.maxtime">
+                  <ComboBox fx:id="comboBoxBeginnStunden" layoutX="333.0" layoutY="71.0" onAction="#newZeitenBerechnung" prefHeight="25.0" prefWidth="196.0" AnchorPane.leftAnchor="333.0" AnchorPane.topAnchor="71.0" />
+                  <ComboBox fx:id="comboBoxBeginnMinuten" layoutX="544.0" layoutY="71.0" onAction="#newZeitenBerechnung" prefHeight="25.0" prefWidth="196.0" AnchorPane.leftAnchor="544.0" AnchorPane.topAnchor="71.0" />
+                  <Label fx:id="labelZeiterfassungGesetzlichesmaximum" layoutX="29.0" layoutY="110.0" text="%label.maxtime" AnchorPane.leftAnchor="27.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="textfieldZeiterfassungGesetzlichesmaximum" editable="false" layoutX="378.0" layoutY="110.0" prefHeight="31.0" prefWidth="358.0" />
-                  <Label fx:id="labelZeiterfassungArbeitsende" layoutX="29.0" layoutY="151.0" text="%label.endwork">
+                  <TextField fx:id="textfieldZeiterfassungGesetzlichesmaximum" editable="false" layoutX="378.0" layoutY="110.0" prefHeight="31.0" prefWidth="358.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="110.0" />
+                  <Label fx:id="labelZeiterfassungArbeitsende" layoutX="29.0" layoutY="151.0" text="%label.endwork" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="151.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="comboBoxEndeStunden" layoutX="379.0" layoutY="154.0" onAction="#newZeitenBerechnung" prefHeight="25.0" prefWidth="168.0" />
-                  <ComboBox fx:id="comboBoxEndeMinuten" layoutX="568.0" layoutY="154.0" onAction="#newZeitenBerechnung" prefHeight="25.0" prefWidth="168.0" />
-                  <CheckBox fx:id="checkboxZeiterfassungZusatzpause" layoutX="29.0" layoutY="206.0" mnemonicParsing="false" onAction="#mehrPause" text="%checkbox.morebreaks">
+                  <ComboBox fx:id="comboBoxEndeStunden" layoutX="333.0" layoutY="154.0" onAction="#newZeitenBerechnung" prefHeight="25.0" prefWidth="196.0" AnchorPane.leftAnchor="333.0" AnchorPane.topAnchor="154.0" />
+                  <ComboBox fx:id="comboBoxEndeMinuten" layoutX="544.0" layoutY="154.0" onAction="#newZeitenBerechnung" prefHeight="25.0" prefWidth="196.0" AnchorPane.leftAnchor="544.0" AnchorPane.topAnchor="154.0" />
+                  <CheckBox fx:id="checkboxZeiterfassungZusatzpause" layoutX="29.0" layoutY="206.0" mnemonicParsing="false" onAction="#mehrPause" text="%checkbox.morebreaks" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="474.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </CheckBox>
-                  <Label fx:id="labelZeiterfassungZusatzpause" layoutX="29.0" layoutY="267.0" text="%label.breaktime" visible="false">
+                  <Label fx:id="labelZeiterfassungZusatzpause" layoutX="29.0" layoutY="267.0" text="%label.breaktime" visible="false" AnchorPane.leftAnchor="27.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="textfieldZeiterfassungZusatzpause" layoutX="378.0" layoutY="267.0" onAction="#newZeitenBerechnung" prefHeight="31.0" prefWidth="358.0" visible="false" />
-                  <Button fx:id="buttonZeiterfassungDatenÜbernehmen" layoutX="289.0" layoutY="430.0" mnemonicParsing="false" onAction="#newPersonButtonPushed" text="%button.applydata">
+                  <TextField fx:id="textfieldZeiterfassungZusatzpause" layoutX="378.0" layoutY="267.0" onAction="#newZeitenBerechnung" prefHeight="31.0" prefWidth="358.0" visible="false" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="30.0" />
+                  <Button fx:id="buttonZeiterfassungDatenÜbernehmen" layoutX="289.0" layoutY="430.0" mnemonicParsing="false" onAction="#newPersonButtonPushed" text="%button.applydata" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="27.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Label layoutX="555.0" layoutY="66.0" text=":">
+                  <Label layoutX="533.0" layoutY="67.0" text=":" AnchorPane.leftAnchor="533.0" AnchorPane.rightAnchor="238.0" AnchorPane.topAnchor="67.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="555.0" layoutY="151.0" text=":">
+                  <Label layoutX="535.0" layoutY="152.0" text=":" AnchorPane.leftAnchor="535.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="checkboxZeiterfassungAbwesenheit" layoutX="29.0" layoutY="307.0" mnemonicParsing="false" onAction="#abweseneheit" text="%checkbox.vacation">
+                  <CheckBox fx:id="checkboxZeiterfassungAbwesenheit" layoutX="29.0" layoutY="307.0" mnemonicParsing="false" onAction="#abweseneheit" text="%checkbox.vacation" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="474.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </CheckBox>
-                  <DatePicker fx:id="vacationDatePicker" layoutX="379.0" layoutY="361.0" prefHeight="31.0" prefWidth="357.0" visible="false" />
-                  <ComboBox fx:id="comboBoxAbwesenheit" layoutX="29.0" layoutY="364.0" prefHeight="31.0" prefWidth="224.0" visible="false" />
+                  <DatePicker fx:id="vacationDatePicker" layoutX="379.0" layoutY="361.0" prefHeight="31.0" prefWidth="357.0" visible="false" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="30.0" />
+                  <ComboBox fx:id="comboBoxAbwesenheit" layoutX="29.0" layoutY="364.0" prefHeight="31.0" prefWidth="224.0" visible="false" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="364.0" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -90,46 +90,51 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="tableViewKalenderKalenderansicht" layoutX="14.0" layoutY="20.0" prefHeight="436.0" prefWidth="549.0">
+                  <TableView fx:id="tableViewKalenderKalenderansicht" layoutX="14.0" layoutY="20.0" prefHeight="436.0" prefWidth="549.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="213.0" AnchorPane.topAnchor="20.0">
                     <columns>
-                      <TableColumn fx:id="birthdayColumn" prefWidth="100.0" sortable="false" text="%table.day" />
-                      <TableColumn fx:id="tablecolumnKalenderArbeitsbeginn" prefWidth="125.0" sortable="false" text="%table.startwork" />
-                        <TableColumn fx:id="tablecolumnKalenderArbeitsende" prefWidth="124.0" sortable="false" text="%table.endwork" />
-                        <TableColumn fx:id="tablecolumnKalenderZusatzpause" prefWidth="99.0" sortable="false" text="%table.break" />
-                        <TableColumn fx:id="tablecolumnKalenderGleitzeit" prefWidth="99.0" sortable="false" text="%table.flexitime" />
+                      <TableColumn fx:id="birthdayColumn" maxWidth="500.0" prefWidth="100.0" sortable="false" text="%table.day" />
+                      <TableColumn fx:id="tablecolumnKalenderArbeitsbeginn" maxWidth="500.0" prefWidth="125.0" sortable="false" text="%table.startwork" />
+                        <TableColumn fx:id="tablecolumnKalenderArbeitsende" maxWidth="500.0" prefWidth="124.0" sortable="false" text="%table.endwork" />
+                        <TableColumn fx:id="tablecolumnKalenderZusatzpause" maxWidth="500.0" prefWidth="99.0" sortable="false" text="%table.break" />
+                        <TableColumn fx:id="tablecolumnKalenderGleitzeit" maxWidth="500.0" prefWidth="99.0" sortable="false" text="%table.flexitime" />
                     </columns>
                   </TableView>
-                  <Label fx:id="labelKalenderMonat" layoutX="572.0" layoutY="267.0" prefHeight="30.0" prefWidth="69.0" text="%label.month">
+                  <Label fx:id="labelKalenderMonat" layoutX="572.0" layoutY="210.0" prefHeight="30.0" prefWidth="69.0" text="%label.month" AnchorPane.bottomAnchor="241.0" AnchorPane.rightAnchor="135.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelKalenderAmpelansicht" layoutX="622.0" layoutY="137.0" prefHeight="30.0" prefWidth="129.0" text="%label.overtime">
+                  <Label fx:id="labelKalenderAmpelansicht" layoutX="622.0" layoutY="83.0" prefHeight="30.0" prefWidth="129.0" text="%label.overtime" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="83.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelKalenderQuartal" layoutX="572.0" layoutY="303.0" prefHeight="30.0" prefWidth="77.0" text="%label.quarter">
+                  <Label fx:id="labelKalenderQuartal" layoutX="564.0" layoutY="244.0" prefHeight="30.0" prefWidth="77.0" text="%label.quarter" AnchorPane.bottomAnchor="207.0" AnchorPane.rightAnchor="135.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelKalenderJahr" layoutX="572.0" layoutY="344.0" prefHeight="26.0" prefWidth="50.0" text="%label.year">
+                  <Label fx:id="labelKalenderJahr" layoutX="591.0" layoutY="287.0" prefHeight="26.0" prefWidth="50.0" text="%label.year" AnchorPane.bottomAnchor="164.0" AnchorPane.rightAnchor="135.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="textfieldKalenderQuartalsStunden" editable="false" layoutX="658.0" layoutY="306.0" prefHeight="25.0" prefWidth="100.0" />
-                  <TextField fx:id="textfieldKalenderJahresStunden" editable="false" layoutX="658.0" layoutY="347.0" prefHeight="25.0" prefWidth="100.0" />
-                  <TextField fx:id="textfieldKalenderMonatsStunden" editable="false" layoutX="658.0" layoutY="270.0" prefHeight="25.0" prefWidth="100.0" />
-                  <Circle fx:id="circleAmpelansichtColorGreen" fill="#1fff3f" layoutX="607.0" layoutY="108.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="circleAmpelansichtColorYellow" fill="WHITE" layoutX="658.0" layoutY="108.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="circleAmpelansichtColorRed" fill="WHITE" layoutX="708.0" layoutY="108.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
-                   <ComboBox fx:id="comboBoxKalenderMonatsauswahl" layoutX="574.0" layoutY="171.0" onAction="#schreibeGleitzeitMonat" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.month" />
-                  <ComboBox fx:id="comboBoxKalenderQuartalsauswahl" layoutX="574.0" layoutY="204.0" onAction="#schreibeGleitzeitQuartal" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.quarter" />
-                  <ComboBox fx:id="comboBoxKalenderJahresauswahl" layoutX="574.0" layoutY="237.0" onAction="#schreibeGleitzeitJahr" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.year" />
-                  <Button fx:id="buttonBerechneZeit" onAction="#berechneZeit" layoutX="571.0" layoutY="412.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" text="%button.calculate">
+                  <TextField fx:id="textfieldKalenderQuartalsStunden" editable="false" layoutX="657.0" layoutY="249.0" prefHeight="25.0" prefWidth="100.0" AnchorPane.bottomAnchor="207.0" AnchorPane.rightAnchor="19.0" />
+                  <TextField fx:id="textfieldKalenderJahresStunden" editable="false" layoutX="657.0" layoutY="290.0" prefHeight="25.0" prefWidth="100.0" AnchorPane.bottomAnchor="166.0" AnchorPane.rightAnchor="19.0" />
+                  <TextField fx:id="textfieldKalenderMonatsStunden" editable="false" layoutX="657.0" layoutY="213.0" prefHeight="25.0" prefWidth="100.0" AnchorPane.bottomAnchor="243.0" AnchorPane.rightAnchor="19.0" />
+                  <Circle fx:id="circleAmpelansichtColorGreen" fill="#1fff3f" layoutX="610.0" layoutY="51.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="35.0" />
+                  <Circle fx:id="circleAmpelansichtColorYellow" fill="WHITE" layoutX="660.0" layoutY="51.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0" />
+                  <Circle fx:id="circleAmpelansichtColorRed" fill="WHITE" layoutX="710.0" layoutY="51.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="35.0" />
+                   <ComboBox fx:id="comboBoxKalenderMonatsauswahl" layoutX="574.0" layoutY="118.0" onAction="#schreibeGleitzeitMonat" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.month" AnchorPane.bottomAnchor="338.0" AnchorPane.rightAnchor="19.0" />
+                  <ComboBox fx:id="comboBoxKalenderQuartalsauswahl" layoutX="574.0" layoutY="149.0" onAction="#schreibeGleitzeitQuartal" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.quarter" AnchorPane.bottomAnchor="307.0" AnchorPane.rightAnchor="19.0" />
+                  <ComboBox fx:id="comboBoxKalenderJahresauswahl" layoutX="574.0" layoutY="181.0" onAction="#schreibeGleitzeitJahr" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.year" AnchorPane.bottomAnchor="275.0" AnchorPane.rightAnchor="19.0" />
+                  <Button fx:id="buttonBerechneZeit" layoutX="571.0" layoutY="355.0" mnemonicParsing="false" onAction="#berechneZeit" prefHeight="44.0" prefWidth="186.0" text="%button.calculate" AnchorPane.bottomAnchor="82.0" AnchorPane.rightAnchor="19.0">
                    <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="572.0" layoutY="412.0" mnemonicParsing="false" prefWidth="186.0" style="-fx-background-color: red;" text="%button.violation" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="19.0">
+                     <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
@@ -140,30 +145,30 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="labelEinstellungenAltesPasswort" layoutX="37.0" layoutY="32.0" prefHeight="36.0" prefWidth="163.0" text="%label.oldpassword">
+                  <Label fx:id="labelEinstellungenAltesPasswort" layoutX="37.0" layoutY="32.0" prefHeight="36.0" prefWidth="163.0" text="%label.oldpassword" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="576.0" AnchorPane.topAnchor="32.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passwortfiedEinstellungenAltesPasswort" layoutX="321.0" layoutY="35.0" prefHeight="31.0" prefWidth="385.0" promptText="%label.oldpassword2" />
-                  <Label fx:id="labelEinstellungenNeuesPasswort1" layoutX="37.0" layoutY="69.0" prefHeight="36.0" prefWidth="163.0" text="%label.newpassword">
+                  <PasswordField fx:id="passwortfiedEinstellungenAltesPasswort" layoutX="321.0" layoutY="35.0" prefHeight="31.0" prefWidth="385.0" promptText="%label.oldpassword2" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="35.0" />
+                  <Label fx:id="labelEinstellungenNeuesPasswort1" layoutX="37.0" layoutY="69.0" prefHeight="36.0" prefWidth="163.0" text="%label.newpassword" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="72.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passwortfiedEinstellungenNeuesPasswort1" layoutX="322.0" layoutY="75.0" prefHeight="31.0" prefWidth="385.0" promptText="%text.newpassword" />
-                  <Label fx:id="labelEinstellungenNeuesPasswort2" layoutX="37.0" layoutY="113.0" prefHeight="36.0" prefWidth="163.0" text="%label.newpassword">
+                  <PasswordField fx:id="passwortfiedEinstellungenNeuesPasswort1" layoutX="294.0" layoutY="72.0" prefHeight="31.0" prefWidth="385.0" promptText="%text.newpassword" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="113.0" />
+                  <Label fx:id="labelEinstellungenNeuesPasswort2" layoutX="37.0" layoutY="113.0" prefHeight="36.0" prefWidth="163.0" text="%label.newpassword" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="113.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passwortfiedEinstellungenNeuesPasswort2" layoutX="321.0" layoutY="116.0" prefHeight="31.0" prefWidth="385.0" promptText="%text.newpassword" />
-                  <Label fx:id="labelEinstellungenSprache" layoutX="41.0" layoutY="169.0" prefHeight="36.0" prefWidth="163.0" text="%label.language">
+                  <PasswordField fx:id="passwortfiedEinstellungenNeuesPasswort2" layoutX="321.0" layoutY="116.0" prefHeight="31.0" prefWidth="385.0" promptText="%text.newpassword" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="72.0" />
+                  <Label fx:id="labelEinstellungenSprache" layoutX="41.0" layoutY="169.0" prefHeight="36.0" prefWidth="163.0" text="%label.language" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="169.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="radioButtonEinstellungDeutsch" layoutX="325.0" layoutY="172.0" mnemonicParsing="false" text="%rbutton.german">
+                  <RadioButton fx:id="radioButtonEinstellungDeutsch" layoutX="325.0" layoutY="172.0" mnemonicParsing="false" text="%rbutton.german" AnchorPane.leftAnchor="294.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -171,35 +176,35 @@
                         <ToggleGroup fx:id="Sprache" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="radioButtonEinstellungenEnglisch" layoutX="602.0" layoutY="172.0" mnemonicParsing="false" text="%rbutton.english" toggleGroup="$Sprache">
+                  <RadioButton fx:id="radioButtonEinstellungenEnglisch" layoutX="602.0" layoutY="172.0" mnemonicParsing="false" text="%rbutton.english" toggleGroup="$Sprache" AnchorPane.rightAnchor="30.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </RadioButton>
-                  <Label fx:id="labelEinstellungenWochenarbeitszeit" layoutX="41.0" layoutY="223.0" prefHeight="36.0" prefWidth="172.0" text="%label.workinghours">
+                  <Label fx:id="labelEinstellungenWochenarbeitszeit" layoutX="41.0" layoutY="223.0" prefHeight="36.0" prefWidth="172.0" text="%label.workinghours" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="226.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="choiceBoxEinstellungenWochenarbeitszeit" layoutX="326.0" layoutY="226.0" prefHeight="31.0" prefWidth="386.0" />
-                  <Label fx:id="labelEinstellungenErsteWarnstufe" layoutX="37.0" layoutY="282.0" prefHeight="36.0" prefWidth="231.0" text="%label.firstalert">
+                  <ChoiceBox fx:id="choiceBoxEinstellungenWochenarbeitszeit" layoutX="326.0" layoutY="226.0" prefHeight="31.0" prefWidth="386.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="226.0" />
+                  <Label fx:id="labelEinstellungenErsteWarnstufe" layoutX="37.0" layoutY="282.0" prefHeight="36.0" prefWidth="231.0" text="%label.firstalert" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="285.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="textfieldEinstellungenErsteWarnstufe" layoutX="325.0" layoutY="285.0" prefHeight="31.0" prefWidth="384.0" promptText="%text.value" />
-                  <Label fx:id="labelEinstellungenZweiteWarnstufe" layoutX="41.0" layoutY="338.0" prefHeight="36.0" prefWidth="226.0" text="%label.secondalert">
+                  <TextField fx:id="textfieldEinstellungenErsteWarnstufe" layoutX="325.0" layoutY="285.0" prefHeight="31.0" prefWidth="384.0" promptText="%text.value" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="285.0" />
+                  <Label fx:id="labelEinstellungenZweiteWarnstufe" layoutX="41.0" layoutY="338.0" prefHeight="36.0" prefWidth="226.0" text="%label.secondalert" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="341.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="textfieldEinstellungenZweiteWarnstufe" layoutX="326.0" layoutY="341.0" prefHeight="31.0" prefWidth="384.0" promptText="%text.value" />
-                  <Button fx:id="buttonEinstellungenEinstellungenÜbernehmen" layoutX="555.0" layoutY="398.0" mnemonicParsing="false" onAction="#newSettingButtonPushed" text="%button.apply" AnchorPane.rightAnchor="64.0">
+                  <TextField fx:id="textfieldEinstellungenZweiteWarnstufe" layoutX="326.0" layoutY="341.0" prefHeight="31.0" prefWidth="384.0" promptText="%text.value" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="341.0" />
+                  <Button fx:id="buttonEinstellungenEinstellungenÜbernehmen" layoutX="555.0" layoutY="398.0" mnemonicParsing="false" onAction="#newSettingButtonPushed" text="%button.apply" AnchorPane.bottomAnchor="39.0" AnchorPane.rightAnchor="30.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonEinstellungenEinstellungenLogout" layoutX="37.0" layoutY="398.0" mnemonicParsing="false" onAction="#switchBack" text="Logout">
+                  <Button fx:id="buttonEinstellungenEinstellungenLogout" layoutX="37.0" layoutY="398.0" mnemonicParsing="false" onAction="#switchBack" text="Logout" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="37.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -212,23 +217,23 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="40.0" layoutY="27.0" text="%label.violationtype">
+                  <Label layoutX="40.0" layoutY="27.0" text="%label.violationtype" AnchorPane.leftAnchor="57.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="40.0" layoutY="85.0" text="%label.day">
+                  <Label layoutX="40.0" layoutY="85.0" text="%label.day" AnchorPane.leftAnchor="57.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="135.0" layoutY="221.0" text="%label.report">
+                  <Label layoutX="135.0" layoutY="221.0" text="%label.report" AnchorPane.leftAnchor="57.0">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField editable="false" layoutX="254.0" layoutY="27.0" prefHeight="31.0" prefWidth="424.0" />
-                  <TextField editable="false" layoutX="254.0" layoutY="85.0" prefHeight="31.0" prefWidth="424.0" />
+                  <TextField editable="false" layoutX="254.0" layoutY="27.0" prefHeight="31.0" prefWidth="424.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" />
+                  <TextField editable="false" layoutX="254.0" layoutY="85.0" prefHeight="31.0" prefWidth="424.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" />
                </children>
             </AnchorPane>
         </content>

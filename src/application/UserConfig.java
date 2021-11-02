@@ -197,6 +197,10 @@ public class UserConfig
 											{
 												timeItem.setTextContent(extra);
 											}
+											if ("overtime".equalsIgnoreCase(timeItem.getNodeName()))
+											{
+												timeItem.setTextContent("");
+											}
 
 										}
 										break;
@@ -213,15 +217,18 @@ public class UserConfig
 										Node newEndItem = doc.createElement("end");
 										Node newBreakItem = doc.createElement("break");
 										Node newExtraItem = doc.createElement("extra");
+										Node newOTItem = doc.createElement("overtime");
 										newBeginItem.setTextContent(timeBegin);
 										newEndItem.setTextContent(timeEnd);
 										newBreakItem.setTextContent(breakTime);
 										newExtraItem.setTextContent(extra);
+										newOTItem.setTextContent("");
 
 										newDayItem.appendChild(newBeginItem);
 										newDayItem.appendChild(newEndItem);
 										newDayItem.appendChild(newBreakItem);
 										newDayItem.appendChild(newExtraItem);
+										newDayItem.appendChild(newOTItem);
 									}
 
 								}
@@ -314,6 +321,114 @@ public class UserConfig
 		return false;
 	}
 
+	public boolean writeOvertime(LocalDate date, String overtime)
+	{
+
+		openFile(FILENAMETIME);
+
+		NodeList listOfUser = doc.getElementsByTagName("worktime");
+
+		int day = date.getDayOfMonth();
+		int month = date.getMonthValue();
+		int year = date.getYear();
+
+		String dayString = "";
+		String monthString = "";
+		String yearString = "";
+
+		yearString = String.valueOf(year);
+
+		if (month < 10)
+		{
+			monthString = String.format("%02d", month);
+		}
+		else
+		{
+			monthString = String.valueOf(month);
+		}
+
+		if (day < 10)
+		{
+			dayString = String.format("%02d", day);
+		}
+		else
+		{
+			dayString = String.valueOf(day);
+		}
+
+		for (int i = 0; i < listOfUser.getLength(); i++)
+		{
+
+			Node user = listOfUser.item(i);
+
+			if (user.getNodeType() == Node.ELEMENT_NODE)
+			{
+
+				NodeList childNodes = user.getChildNodes();
+
+				for (int j = 0; j < childNodes.getLength(); j++)
+				{
+					Node item = childNodes.item(j);
+
+					if (item.getNodeType() == Node.ELEMENT_NODE && item.getAttributes().getNamedItem("name").getNodeValue().equals(yearString))
+					{
+
+						NodeList monthNodes = item.getChildNodes();
+
+						for (int k = 0; k < monthNodes.getLength(); k++)
+						{
+							Node monthItem = monthNodes.item(k);
+							if (monthItem.getNodeType() == Node.ELEMENT_NODE && monthItem.getAttributes().getNamedItem("name").getNodeValue().equals(monthString))
+							{
+
+								NodeList dayNodes = monthItem.getChildNodes();
+
+								for (int u = 0; u < dayNodes.getLength(); u++)
+								{
+									Node dayItem = dayNodes.item(u);
+									if (dayItem.getNodeType() == Node.ELEMENT_NODE && dayItem.getAttributes().getNamedItem("name").getNodeValue().equals(dayString))
+									{
+
+										NodeList timeNodes = dayItem.getChildNodes();
+
+										for (int v = 0; v < timeNodes.getLength(); v++)
+										{
+											Node timeItem = timeNodes.item(v);
+
+											if ("overtime".equalsIgnoreCase(timeItem.getNodeName()))
+											{
+												timeItem.setTextContent(overtime);
+											}
+
+										}
+
+									}
+
+
+								}
+
+							}
+
+
+
+						}
+
+
+					}
+
+				}
+			}
+
+		}
+		if (closeFile())
+		{
+			return true;
+		}
+
+		return false;
+
+	}
+
 
 	public List<person> getTimes()
 	{
@@ -376,6 +491,10 @@ public class UserConfig
 											if (timeNodes.item(v).getNodeName().equals("extra"))
 											{
 												p1.setPause(new SimpleStringProperty(timeNodes.item(v).getTextContent()));
+											}
+											if (timeNodes.item(v).getNodeName().equals("overtime"))
+											{
+												p1.setOvertime(new SimpleStringProperty(timeNodes.item(v).getTextContent()));
 											}
 
 										}
@@ -918,6 +1037,41 @@ public class UserConfig
 		}
 
 		return wt;
+	}
+
+	public String getPassword()
+	{
+
+		String pw = "";
+		openFile(FILENAMEUSER);
+
+		NodeList listOfUser = doc.getElementsByTagName("user");
+
+		for (int i = 0; i < listOfUser.getLength(); i++)
+		{
+
+			Node user = listOfUser.item(i);
+			if (user.getNodeType() == Node.ELEMENT_NODE)
+			{
+
+				NodeList childNodes = user.getChildNodes();
+
+
+				for (int j = 0; j < childNodes.getLength(); j++)
+				{
+
+					if (childNodes.item(j).getNodeName().equals("password"))
+					{
+						pw = childNodes.item(j).getTextContent();
+					}
+
+				}
+
+			}
+
+		}
+
+		return pw;
 	}
 
 	public String getUsername()

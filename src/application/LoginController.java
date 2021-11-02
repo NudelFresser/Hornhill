@@ -91,4 +91,17 @@ public class LoginController {
 		window.setScene(tableViewscene);
 		window.show();
 	}
+	
+	public void switchToPasswortVergessen(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("PasswortVergessen.fxml"));
+		loader.setResources(ResourceBundle.getBundle("bundles.language", Array.locale));
+
+		Parent root = loader.load();
+		Scene tableViewscene = new Scene(root);
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		tableViewscene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		window.setScene(tableViewscene);
+		window.show();
+}
 }
