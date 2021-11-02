@@ -113,7 +113,7 @@ public class RegistrierungController
 
 
 	}
-
+   //Methode um nach einer erfolgreichen Registration wieder zurück zum Loginfenster zu wechseln
     public void switchToLogin(ActionEvent event) throws IOException
 	{
     	UserConfig uc = new UserConfig();
@@ -193,7 +193,7 @@ public class RegistrierungController
 		}
 	}
 
-
+   //Methode um wieder zurück zum Loginfenster zu wechseln
 	public void switchBack(ActionEvent event) throws IOException
 	{
 

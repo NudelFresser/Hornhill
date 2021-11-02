@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+//Hier werden die Arrays und Variablen global definiert um die Dropdownfelder entsprechend zu füllen
 class Array {
 	public static String[] stunden = { "30", "35", "40" };
 	public static String unter18 = "35";
@@ -30,6 +32,7 @@ class Array {
 
 public class Main extends Application {
 
+	//Methode um das Loginfenster zu laden mit der entsprechend gespeicherten Sprache
 	@Override
 	public void start(Stage stage) throws Exception {
 

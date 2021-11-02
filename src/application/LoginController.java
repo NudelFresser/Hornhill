@@ -40,7 +40,7 @@ public class LoginController {
 		assert labelPasswort != null : "fx:id=\"labelPasswort\" was not injected: check your FXML file 'Login.fxml'.";
 		assert textfieldPasswort != null : "fx:id=\"textfieldPasswort\" was not injected: check your FXML file 'Login.fxml'.";
 	}
-
+	//Methode um bei einem erfolgreichen Login in das Hauptfenster zu wechseln
 	public void switchToZeiterfassung(ActionEvent event) throws IOException {
 
 		UserConfig uc = new UserConfig();
@@ -77,7 +77,7 @@ public class LoginController {
 		}
 
 	}
-
+	//Methode um in das Registrationsfenster zu wechseln um sich registrieren zu können
 	public void switchToRegistration(ActionEvent event) throws IOException {
 
 		FXMLLoader loader = new FXMLLoader();
@@ -91,7 +91,7 @@ public class LoginController {
 		window.setScene(tableViewscene);
 		window.show();
 	}
-	
+	//Methode um zum Passwort vergessen Fenster zu wechseln
 	public void switchToPasswortVergessen(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("PasswortVergessen.fxml"));
