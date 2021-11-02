@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -298,6 +299,13 @@ public class SampleController {
 		tableViewRowColor();
 
 		tableViewKalenderKalenderansicht.setEditable(false);
+		try {
+			schreibeGleitzeitJahr(null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void tableViewRowColor() {
@@ -634,7 +642,13 @@ public class SampleController {
 				JOptionPane.showMessageDialog(null, bundle.getString("joption.wrongformat"));
 
 			}
-
+			try {
+				schreibeGleitzeitJahr(event);
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 		if (!textfieldEinstellungenZweiteWarnstufe.getText().equals("")) {
 
@@ -683,7 +697,13 @@ public class SampleController {
 
 				JOptionPane.showMessageDialog(null, bundle.getString("joption.wrongformat"));
 			}
-
+			try {
+				schreibeGleitzeitJahr(event);
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 
 		if (settingsChanged) {
@@ -707,13 +727,11 @@ public class SampleController {
 		if (checkboxZeiterfassungZusatzpause.isSelected()) {
 			labelZeiterfassungZusatzpause.setVisible(true);
 			textfieldZeiterfassungZusatzpause.setVisible(true);
-			circleAmpelansichtColorYellow.setFill(Color.DARKSLATEBLUE);
 
 		} else {
 
 			labelZeiterfassungZusatzpause.setVisible(false);
 			textfieldZeiterfassungZusatzpause.setVisible(false);
-			circleAmpelansichtColorYellow.setFill(Color.WHITE);
 
 		}
 
@@ -797,5 +815,126 @@ public class SampleController {
 			// 1Zeile drüber raus
 		}
 	}
+	public void schreibeGleitzeitJahr(ActionEvent event) throws IOException,ParseException{
+		int year = LocalDate.now().getYear();
+		if(comboBoxKalenderJahresauswahl.getSelectionModel().getSelectedItem() != null) {
+			year=Integer.parseInt(comboBoxKalenderJahresauswahl.getSelectionModel().getSelectedItem());
+		}
+		int gleitzeitJahr =0;
+		for(int i =1;i<=12;i++) {
+		gleitzeitJahr+=gleitzeitMonat(year, i);
+		}
+		if(gleitzeitJahr<0) {
+			gleitzeitJahr =gleitzeitJahr *(-1);
+			textfieldKalenderJahresStunden.setText("-"+gleitzeitJahr/60+":"+gleitzeitJahr%60);
+			
+		}else {
+			textfieldKalenderJahresStunden.setText(""+gleitzeitJahr/60+":"+gleitzeitJahr%60);
+		}
+		UserConfig uc = new UserConfig();
+		if((((double)gleitzeitJahr)/60)>uc.getFirstWarning() && (((double)gleitzeitJahr)/60)<uc.getSecondWarning()) {
+			circleAmpelansichtColorYellow.setFill(Color.YELLOW);
+			circleAmpelansichtColorRed.setFill(Color.WHITE);
+			circleAmpelansichtColorGreen.setFill(Color.WHITE);
+		} else if((((double)gleitzeitJahr)/60)>uc.getSecondWarning()) {
+			circleAmpelansichtColorYellow.setFill(Color.WHITE);
+			circleAmpelansichtColorRed.setFill(Color.RED);
+			circleAmpelansichtColorGreen.setFill(Color.WHITE);
+		}else if((((double)gleitzeitJahr)/60)<uc.getFirstWarning()) {
+			circleAmpelansichtColorYellow.setFill(Color.WHITE);
+			circleAmpelansichtColorRed.setFill(Color.WHITE);
+			circleAmpelansichtColorGreen.setFill(Color.LAWNGREEN);
+		}
+		schreibeGleitzeitMonat(event);
+		schreibeGleitzeitQuartal(event);
+	}
+	public void schreibeGleitzeitQuartal(ActionEvent event) throws IOException,ParseException{
+		String month =""+LocalDate.now().getMonthValue();
+		String quartal =""+1;
+		if(3<Integer.parseInt(month) && Integer.parseInt(month)<7) {quartal=""+2;}
+		if(6<Integer.parseInt(month) && Integer.parseInt(month)<10) {quartal=""+3;}
+		if(9<Integer.parseInt(month) && Integer.parseInt(month)<12) {quartal=""+4;}
+		if(comboBoxKalenderQuartalsauswahl.getSelectionModel().getSelectedItem() != null) {
+			quartal = comboBoxKalenderQuartalsauswahl.getSelectionModel().getSelectedItem();
+		}
+		if(comboBoxKalenderMonatsauswahl.getSelectionModel().getSelectedItem() != null) {
+		month = comboBoxKalenderMonatsauswahl.getSelectionModel().getSelectedItem();
+		}
+		int year = LocalDate.now().getYear();
+		if(comboBoxKalenderJahresauswahl.getSelectionModel().getSelectedItem() != null) {
+			year=Integer.parseInt(comboBoxKalenderJahresauswahl.getSelectionModel().getSelectedItem());
+		}
+		int gleitzeitQuartal =0;
+		for(int i =((Integer.parseInt(quartal)*3)-2);i<=(Integer.parseInt(quartal)*3);i++) {
+			gleitzeitQuartal += gleitzeitMonat(year,i);
+		}
+		if(gleitzeitQuartal<0) {
+			gleitzeitQuartal =gleitzeitQuartal *(-1);
+			textfieldKalenderQuartalsStunden.setText("-"+gleitzeitQuartal/60+":"+gleitzeitQuartal%60);
+			
+		}else {
+			textfieldKalenderQuartalsStunden.setText(""+gleitzeitQuartal/60+":"+gleitzeitQuartal%60);
+		}
+	}
+	
+	public int schreibeGleitzeitMonat(ActionEvent event) throws IOException,ParseException {
+		String month =""+LocalDate.now().getMonthValue();
+		if(comboBoxKalenderMonatsauswahl.getSelectionModel().getSelectedItem() != null) {
+		month = comboBoxKalenderMonatsauswahl.getSelectionModel().getSelectedItem();
+		}
+		int year = LocalDate.now().getYear();
+		if(comboBoxKalenderJahresauswahl.getSelectionModel().getSelectedItem() != null) {
+			year=Integer.parseInt(comboBoxKalenderJahresauswahl.getSelectionModel().getSelectedItem());
+		}
+		int m = Integer.parseInt(month);
+		int gleitzeitMonat=gleitzeitMonat(year,m);
+		if(gleitzeitMonat<0) {
+			gleitzeitMonat =gleitzeitMonat *(-1);
+			textfieldKalenderMonatsStunden.setText("-"+gleitzeitMonat/60+":"+gleitzeitMonat%60);
+			gleitzeitMonat =gleitzeitMonat *(-1);
+			
+		}else {
+			textfieldKalenderMonatsStunden.setText(""+gleitzeitMonat/60+":"+gleitzeitMonat%60);
+		}
+		return gleitzeitMonat;
+		
+	}
+	public int gleitzeitMonat(int year, int m) throws ParseException {
+		
+		YearMonth yearMonthObject = YearMonth.of(year, m);
+		int daysInMonth = yearMonthObject.lengthOfMonth(); //28 
+		int gleitzeitMonat = 0;
+		
+		for(int i =1;i<=daysInMonth;i++) {
+		LocalDate date = LocalDate.of(year,m, i);
+		gleitzeitMonat += gleitzeitTag(date);
+		}
+		return gleitzeitMonat;
+		
+	}
 
+	public int gleitzeitTag(LocalDate d) throws ParseException {
+		methoden m2 = new methoden();
+		UserConfig uc = new UserConfig();
+		String[] gz = uc.getDayData(d);
+
+		if(gz[0] != "") {
+		
+		m2.setStartStunde(gz[0].split(":")[0]);
+		m2.setStartMinute(gz[0].split(":")[1]);
+		m2.setEndeStunde(gz[1].split(":")[0]);
+		m2.setEndeMinute(gz[1].split(":")[1]);
+		m2.setPauseExtra(gz[3]);
+		m2.MaxStundenErlaubt();
+		m2.AuswahlWochenStundenMaxErlaubt();
+		m2.MaxStundenErlaubt();
+		String[] str = m2.berechneArbeitszeitMitPause().split(":");
+		int zeit = Integer.parseInt(str[0])*60+Integer.parseInt(str[1]);
+		zeit = zeit - ((Integer.parseInt(uc.getWorktime())/5)*60);
+		return zeit;
+		
+		}
+		return 0;
+
+	}
 }

@@ -125,9 +125,9 @@
                   <Circle fx:id="circleAmpelansichtColorGreen" fill="#1fff3f" layoutX="607.0" layoutY="108.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
                   <Circle fx:id="circleAmpelansichtColorYellow" fill="WHITE" layoutX="658.0" layoutY="108.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
                   <Circle fx:id="circleAmpelansichtColorRed" fill="WHITE" layoutX="708.0" layoutY="108.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
-                   <ComboBox fx:id="comboBoxKalenderMonatsauswahl" layoutX="574.0" layoutY="171.0" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.month" />
-                  <ComboBox fx:id="comboBoxKalenderQuartalsauswahl" layoutX="574.0" layoutY="204.0" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.quarter" />
-                  <ComboBox fx:id="comboBoxKalenderJahresauswahl" layoutX="574.0" layoutY="237.0" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.year" />
+                   <ComboBox fx:id="comboBoxKalenderMonatsauswahl" layoutX="574.0" layoutY="171.0" onAction="#schreibeGleitzeitMonat" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.month" />
+                  <ComboBox fx:id="comboBoxKalenderQuartalsauswahl" layoutX="574.0" layoutY="204.0" onAction="#schreibeGleitzeitQuartal" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.quarter" />
+                  <ComboBox fx:id="comboBoxKalenderJahresauswahl" layoutX="574.0" layoutY="237.0" onAction="#schreibeGleitzeitJahr" prefHeight="25.0" prefWidth="183.0" promptText="%combobox.year" />
                   <Button fx:id="buttonBerechneZeit" onAction="#berechneZeit" layoutX="571.0" layoutY="412.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" text="%button.calculate">
                    <font>
                         <Font size="20.0" />
