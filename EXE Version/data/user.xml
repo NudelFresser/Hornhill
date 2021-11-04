@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><user>
+    <username>x</username>  
+    <password>x</password>
+    <birthdate>09.11.2004</birthdate>
+    <language>d</language>    
+    <worktime>35</worktime>
+	<firstWarning>10</firstWarning>
+	<secondWarning>20</secondWarning>
+</user>
