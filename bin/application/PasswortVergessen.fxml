@@ -19,17 +19,17 @@
             <Font name="Arial Nova" size="20.0" />
          </font>
       </Button>
-      <DatePicker fx:id="datepickerGeburtstagseingabe" layoutX="321.0" layoutY="76.0" prefHeight="31.0" prefWidth="249.0" AnchorPane.leftAnchor="321.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="76.0" />
-      <Label fx:id="labelGeburtstagseingabe" layoutX="50.0" layoutY="76.0" text="%label.enterBirthday" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="76.0">
+      <DatePicker fx:id="datepickerGeburtstagseingabe" layoutX="321.0" layoutY="137.0" prefHeight="31.0" prefWidth="249.0" AnchorPane.leftAnchor="321.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="137.0" />
+      <Label fx:id="labelGeburtstagseingabe" layoutX="50.0" layoutY="134.0" text="%label.enterBirthday" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="134.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="labelNutzername" layoutX="50.0" layoutY="134.0" text="%label.enterUsername" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="134.0">
+      <Label fx:id="labelNutzername" layoutX="50.0" layoutY="76.0" text="%label.enterUsername" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="76.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="textfieldNutzername" layoutX="321.0" layoutY="137.0" prefHeight="25.0" prefWidth="249.0" />
+      <TextField fx:id="textfieldNutzername" layoutX="321.0" layoutY="76.0" prefHeight="25.0" prefWidth="249.0" />
    </children>
 </AnchorPane>

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -12,12 +11,12 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-
 <TabPane fx:id="tabPaneAnsicht" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="776.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="173.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
   <tabs>
     <Tab text="%tab.timetracking">
@@ -35,7 +34,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="comboBoxBeginnStunden" layoutX="332.0" layoutY="71.0" onAction="#newZeitenBerechnung" prefHeight="25.0" prefWidth="196.0" AnchorPane.leftAnchor="332.0" AnchorPane.topAnchor="71.0" />
+                  <ComboBox fx:id="comboBoxBeginnStunden" layoutX="332.0" layoutY="71.0" onAction="#newZeitenBerechnung" prefHeight="27.0" prefWidth="194.0" AnchorPane.leftAnchor="332.0" AnchorPane.topAnchor="71.0" />
                   <ComboBox fx:id="comboBoxBeginnMinuten" layoutX="544.0" layoutY="71.0" onAction="#newZeitenBerechnung" prefHeight="25.0" prefWidth="197.0" AnchorPane.leftAnchor="544.0" AnchorPane.topAnchor="71.0" />
                   <Label fx:id="labelZeiterfassungGesetzlichesmaximum" layoutX="27.0" layoutY="113.0" text="%label.maxtime" AnchorPane.leftAnchor="27.0">
                      <font>
@@ -66,7 +65,7 @@
                         <Font name="Arial Nova" size="20.0" />
                      </font>
                   </Button>
-                  <Label layoutX="533.0" layoutY="68.0" text=":" AnchorPane.leftAnchor="533.0" AnchorPane.rightAnchor="238.0" AnchorPane.topAnchor="68.0">
+                  <Label layoutX="533.0" layoutY="68.0" text=":" AnchorPane.topAnchor="68.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -220,7 +219,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="40.0" layoutY="85.0" text="%label.day" AnchorPane.leftAnchor="57.0">
+                  <Label layoutX="57.0" layoutY="175.0" text="%label.day" AnchorPane.leftAnchor="57.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -230,8 +229,13 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField editable="false" layoutX="254.0" layoutY="27.0" prefHeight="31.0" prefWidth="424.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" />
-                  <TextField editable="false" layoutX="254.0" layoutY="85.0" prefHeight="31.0" prefWidth="424.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" />
+                  <TextField fx:id="textfieldViolationDay" editable="false" layoutX="294.0" layoutY="175.0" prefHeight="31.0" prefWidth="424.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="175.0" />
+                  <Button fx:id="buttonReportViolation" layoutX="694.0" layoutY="424.0" mnemonicParsing="false" onAction="#reportTimeviolation" text="%button.sendReport" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="26.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <TextArea fx:id="textareaViolationtype" layoutX="294.0" layoutY="27.0" prefHeight="142.0" prefWidth="454.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="27.0" />
                </children>
             </AnchorPane>
         </content>
