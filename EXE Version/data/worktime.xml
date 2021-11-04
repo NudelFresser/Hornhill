@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><worktime name="user">
+<year name="2021">
+<month name="11">
+<day name="03">
+<begin>06:00</begin><end>15:00</end><break>60</break><extra>0</extra><overtime>1:00</overtime><reported>0</reported></day><day name="01">
+<begin>08:00</begin><end>17:30</end><break>60</break><extra>0</extra><overtime>1:30</overtime><reported>2</reported></day></month></year></worktime>
