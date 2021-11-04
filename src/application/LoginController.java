@@ -40,7 +40,8 @@ public class LoginController {
 		assert labelPasswort != null : "fx:id=\"labelPasswort\" was not injected: check your FXML file 'Login.fxml'.";
 		assert textfieldPasswort != null : "fx:id=\"textfieldPasswort\" was not injected: check your FXML file 'Login.fxml'.";
 	}
-
+	//Methode um bei einem erfolgreichen Login in das Hauptfenster zu wechseln
+	// Es wird automatisch die entsprechend hinterlegte bzw. abgespeicherte Sprache gewählt und geladen
 	public void switchToZeiterfassung(ActionEvent event) throws IOException {
 
 		UserConfig uc = new UserConfig();
@@ -63,6 +64,7 @@ public class LoginController {
 
 			Scene tableViewscene = new Scene(root);
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			tableViewscene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
 			window.setScene(tableViewscene);
 			window.show();
 		}
@@ -77,7 +79,8 @@ public class LoginController {
 		}
 
 	}
-
+	//Methode um in das Registrationsfenster zu wechseln um sich registrieren zu können
+	// Es wird automatisch die entsprechend hinterlegte bzw. abgespeicherte Sprache gewählt und geladen
 	public void switchToRegistration(ActionEvent event) throws IOException {
 
 		FXMLLoader loader = new FXMLLoader();
@@ -88,10 +91,12 @@ public class LoginController {
 
 		Scene tableViewscene = new Scene(root);
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		tableViewscene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		window.setScene(tableViewscene);
 		window.show();
 	}
-	
+	//Methode um zum Passwort vergessen Fenster zu wechseln
+	// Es wird automatisch die entsprechend hinterlegte bzw. abgespeicherte Sprache gewählt und geladen
 	public void switchToPasswortVergessen(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("PasswortVergessen.fxml"));

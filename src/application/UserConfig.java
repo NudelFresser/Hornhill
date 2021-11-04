@@ -31,10 +31,12 @@ import org.xml.sax.SAXException;
 import javafx.beans.property.SimpleStringProperty;
 
 
+// Klasse enthält alle Methoden für das Schreiben und Lesen von XML-Dateien
 public class UserConfig
 {
-
+	// File mit Userdaten
 	private static final String FILENAMEUSER = "./data/user.xml";
+	// File mit Arbeitszeitdaten
 	private static final String FILENAMETIME = "./data/worktime.xml";
 	private static DocumentBuilderFactory dbf;
 	private static InputStream is;
@@ -42,6 +44,7 @@ public class UserConfig
 	private static DocumentBuilder db;
 	private static File xmlFile;
 
+	// Öffne gewünschtes XML File zum lesen
 	public static void openFile(String file)
 	{
 		try
@@ -59,6 +62,8 @@ public class UserConfig
 
 	}
 
+
+	// Schließe File und schreibe Änderungen
 	public static boolean closeFile()
 	{
 		try
@@ -74,6 +79,8 @@ public class UserConfig
 		}
 	}
 
+
+	// benötigt zum überschreiben einer XML Datei
 	private static void overwriteXmlFile(File xmlFile, Document document,
 		Transformer transformer) throws IOException, TransformerException
 	{
@@ -83,6 +90,8 @@ public class UserConfig
 		transformer.transform(source, result);
 	}
 
+
+	// benötigt zum überschreiben einer XML Datei
 	private static Transformer createXmlTransformer() throws Exception
 	{
 		Transformer transformer = TransformerFactory.newInstance()
@@ -93,11 +102,11 @@ public class UserConfig
 	}
 
 
-
+	// lege neuen Benutzer in user.xml an und lösche alte gespeicherte Arbeitszeiten
 	public boolean registerUser(String username, String password, String birthdate, char language, String worktime)
 	{
 		if (this.setUsername(username) && this.setPassword(password) && this.setBirthdate(birthdate) && this.setLanguage(language) && this.setWeeklyWorktime(worktime)
-			&& this.setFirstWarning("") && this.setSecondWarning("") && this.newWorktime())
+			&& this.setFirstWarning("10") && this.setSecondWarning("20") && this.newWorktime())
 		{
 			return true;
 		}
@@ -107,6 +116,7 @@ public class UserConfig
 	}
 
 
+	// Speichere Arbeitszeiten und Pausenzeiten für ausgewählten Tag in worktime.xml
 	public boolean saveTime(LocalDate date, String timeBegin, String timeEnd, String breakTime, String extra)
 	{
 
@@ -201,6 +211,10 @@ public class UserConfig
 											{
 												timeItem.setTextContent("");
 											}
+											if ("reported".equalsIgnoreCase(timeItem.getNodeName()))
+											{
+												timeItem.setTextContent("0");
+											}
 
 										}
 										break;
@@ -218,17 +232,20 @@ public class UserConfig
 										Node newBreakItem = doc.createElement("break");
 										Node newExtraItem = doc.createElement("extra");
 										Node newOTItem = doc.createElement("overtime");
+										Node newRepItem = doc.createElement("reported");
 										newBeginItem.setTextContent(timeBegin);
 										newEndItem.setTextContent(timeEnd);
 										newBreakItem.setTextContent(breakTime);
 										newExtraItem.setTextContent(extra);
 										newOTItem.setTextContent("");
+										newRepItem.setTextContent("0");
 
 										newDayItem.appendChild(newBeginItem);
 										newDayItem.appendChild(newEndItem);
 										newDayItem.appendChild(newBreakItem);
 										newDayItem.appendChild(newExtraItem);
 										newDayItem.appendChild(newOTItem);
+										newDayItem.appendChild(newRepItem);
 									}
 
 								}
@@ -273,6 +290,7 @@ public class UserConfig
 	}
 
 
+	// Prüfe ob Login-Daten mit user.xml übereinstimmen
 	public boolean login(String username, String password)
 	{
 
@@ -321,6 +339,8 @@ public class UserConfig
 		return false;
 	}
 
+
+	// schreibe Gleitzeit für ausgewählten Tag in worktime.xml
 	public boolean writeOvertime(LocalDate date, String overtime)
 	{
 
@@ -404,15 +424,11 @@ public class UserConfig
 
 									}
 
-
 								}
 
 							}
 
-
-
 						}
-
 
 					}
 
@@ -430,10 +446,117 @@ public class UserConfig
 	}
 
 
-	public List<person> getTimes()
+	// schreibe Meldestatus für ausgewählten Tag in worktime.xml
+	public boolean writeReported(LocalDate date, String reported)
 	{
 
-		List<person> workdays = new ArrayList<person>();
+		openFile(FILENAMETIME);
+
+		NodeList listOfUser = doc.getElementsByTagName("worktime");
+
+		int day = date.getDayOfMonth();
+		int month = date.getMonthValue();
+		int year = date.getYear();
+
+		String dayString = "";
+		String monthString = "";
+		String yearString = "";
+
+		yearString = String.valueOf(year);
+
+		if (month < 10)
+		{
+			monthString = String.format("%02d", month);
+		}
+		else
+		{
+			monthString = String.valueOf(month);
+		}
+
+		if (day < 10)
+		{
+			dayString = String.format("%02d", day);
+		}
+		else
+		{
+			dayString = String.valueOf(day);
+		}
+
+		for (int i = 0; i < listOfUser.getLength(); i++)
+		{
+
+			Node user = listOfUser.item(i);
+
+			if (user.getNodeType() == Node.ELEMENT_NODE)
+			{
+
+				NodeList childNodes = user.getChildNodes();
+
+				for (int j = 0; j < childNodes.getLength(); j++)
+				{
+					Node item = childNodes.item(j);
+
+					if (item.getNodeType() == Node.ELEMENT_NODE && item.getAttributes().getNamedItem("name").getNodeValue().equals(yearString))
+					{
+
+						NodeList monthNodes = item.getChildNodes();
+
+						for (int k = 0; k < monthNodes.getLength(); k++)
+						{
+							Node monthItem = monthNodes.item(k);
+							if (monthItem.getNodeType() == Node.ELEMENT_NODE && monthItem.getAttributes().getNamedItem("name").getNodeValue().equals(monthString))
+							{
+
+								NodeList dayNodes = monthItem.getChildNodes();
+
+								for (int u = 0; u < dayNodes.getLength(); u++)
+								{
+									Node dayItem = dayNodes.item(u);
+									if (dayItem.getNodeType() == Node.ELEMENT_NODE && dayItem.getAttributes().getNamedItem("name").getNodeValue().equals(dayString))
+									{
+
+										NodeList timeNodes = dayItem.getChildNodes();
+
+										for (int v = 0; v < timeNodes.getLength(); v++)
+										{
+											Node timeItem = timeNodes.item(v);
+
+											if ("reported".equalsIgnoreCase(timeItem.getNodeName()))
+											{
+												timeItem.setTextContent(reported);
+											}
+
+										}
+
+									}
+
+								}
+
+							}
+
+						}
+
+					}
+
+				}
+			}
+
+		}
+		if (closeFile())
+		{
+			return true;
+		}
+
+		return false;
+
+	}
+
+
+	// hole Daten aus worktime.xml für Kalender-Tabelle des Programms
+	public List<Person> getTimes()
+	{
+
+		List<Person> workdays = new ArrayList<Person>();
 
 		openFile(FILENAMETIME);
 
@@ -472,7 +595,7 @@ public class UserConfig
 									Node dayItem = dayNodes.item(u);
 									if (dayItem.getNodeType() == Node.ELEMENT_NODE && dayItem.getNodeName().equals(String.valueOf("day")))
 									{
-										person p1 = new person();
+										Person p1 = new Person();
 										String day = dayItem.getAttributes().getNamedItem("name").getNodeValue();
 										NodeList timeNodes = dayItem.getChildNodes();
 										LocalDate date = LocalDate.parse(year + "-" + month + "-" + day);
@@ -514,6 +637,7 @@ public class UserConfig
 	}
 
 
+	// setze neues Passwort
 	public boolean newPassword(String oldPass, String newPass)
 	{
 
@@ -541,11 +665,11 @@ public class UserConfig
 							childNodes.item(j).setTextContent(newPass);
 
 						}
-						else {
+						else
+						{
 							return false;
 						}
 					}
-
 
 				}
 
@@ -560,6 +684,7 @@ public class UserConfig
 	}
 
 
+	// ändere Sprache
 	public boolean setLanguage(char sprache)
 	{
 
@@ -598,6 +723,7 @@ public class UserConfig
 	}
 
 
+	// setze Wochenarbeitszeit
 	public boolean setWeeklyWorktime(String worktime)
 	{
 
@@ -637,6 +763,7 @@ public class UserConfig
 	}
 
 
+	// setzte Benutzername
 	public boolean setUsername(String username)
 	{
 
@@ -675,6 +802,7 @@ public class UserConfig
 	}
 
 
+	// setze Passwort
 	public boolean setPassword(String password)
 	{
 
@@ -713,6 +841,7 @@ public class UserConfig
 	}
 
 
+	// setze Geburtstag
 	public boolean setBirthdate(String birthdate)
 	{
 
@@ -751,6 +880,7 @@ public class UserConfig
 	}
 
 
+	// setze erste Warnstufe für Ampellogik
 	public boolean setFirstWarning(String firstWarning)
 	{
 
@@ -788,6 +918,8 @@ public class UserConfig
 		return false;
 	}
 
+
+	// setze zweite Warnstufe für Ampellogik
 	public boolean setSecondWarning(String secondWarning)
 	{
 
@@ -825,6 +957,8 @@ public class UserConfig
 		return false;
 	}
 
+
+	// leere worktime.xml
 	public boolean newWorktime()
 	{
 
@@ -837,13 +971,13 @@ public class UserConfig
 
 			Node node = listOfUser.item(i);
 
-			while (node.hasChildNodes()) {
-		        node.removeChild(node.getFirstChild());
+			while (node.hasChildNodes())
+			{
+				node.removeChild(node.getFirstChild());
 			}
 			Node lb = doc.createTextNode("\n");
 			node.appendChild(lb);
 		}
-
 
 		if (closeFile())
 		{
@@ -853,6 +987,7 @@ public class UserConfig
 	}
 
 
+	// hole eingestellte Sprache
 	public int getLanguage()
 	{
 
@@ -891,6 +1026,7 @@ public class UserConfig
 	}
 
 
+	// hole Geburtsdatum
 	public String getBirthday()
 	{
 
@@ -907,7 +1043,6 @@ public class UserConfig
 			{
 
 				NodeList childNodes = user.getChildNodes();
-
 
 				for (int j = 0; j < childNodes.getLength(); j++)
 				{
@@ -926,6 +1061,8 @@ public class UserConfig
 		return bd;
 	}
 
+
+	// hole erste Warnstufe für Ampellogik
 	public int getFirstWarning()
 	{
 
@@ -948,10 +1085,12 @@ public class UserConfig
 
 					if (childNodes.item(j).getNodeName().equals("firstWarning"))
 					{
-						try {
+						try
+						{
 							fw = Integer.parseInt(childNodes.item(j).getTextContent());
 						}
-						catch(Exception e) {
+						catch (Exception e)
+						{
 							return -1;
 						}
 					}
@@ -965,6 +1104,8 @@ public class UserConfig
 		return fw;
 	}
 
+
+	// hole zweite Warnstufe für Ampellogik
 	public int getSecondWarning()
 	{
 
@@ -987,10 +1128,12 @@ public class UserConfig
 
 					if (childNodes.item(j).getNodeName().equals("secondWarning"))
 					{
-						try {
+						try
+						{
 							sw = Integer.parseInt(childNodes.item(j).getTextContent());
 						}
-						catch(Exception e) {
+						catch (Exception e)
+						{
 							return 9999;
 						}
 					}
@@ -1004,6 +1147,8 @@ public class UserConfig
 		return sw;
 	}
 
+
+	// hole Wochenarbeitszeit
 	public String getWorktime()
 	{
 
@@ -1020,7 +1165,6 @@ public class UserConfig
 			{
 
 				NodeList childNodes = user.getChildNodes();
-
 
 				for (int j = 0; j < childNodes.getLength(); j++)
 				{
@@ -1039,6 +1183,8 @@ public class UserConfig
 		return wt;
 	}
 
+
+	// hole Passwort
 	public String getPassword()
 	{
 
@@ -1055,7 +1201,6 @@ public class UserConfig
 			{
 
 				NodeList childNodes = user.getChildNodes();
-
 
 				for (int j = 0; j < childNodes.getLength(); j++)
 				{
@@ -1074,6 +1219,8 @@ public class UserConfig
 		return pw;
 	}
 
+
+	// hole Benutzername
 	public String getUsername()
 	{
 
@@ -1090,7 +1237,6 @@ public class UserConfig
 			{
 
 				NodeList childNodes = user.getChildNodes();
-
 
 				for (int j = 0; j < childNodes.getLength(); j++)
 				{
@@ -1109,10 +1255,114 @@ public class UserConfig
 		return un;
 	}
 
+
+	// hole Meldestatus für Farbgebung in Kalender
+	public int getReported(LocalDate date)
+	{
+
+		int reported = 0;
+
+		int day = date.getDayOfMonth();
+		int month = date.getMonthValue();
+		int year = date.getYear();
+
+		String dayString = "";
+		String monthString = "";
+		String yearString = "";
+
+		yearString = String.valueOf(year);
+
+		if (month < 10)
+		{
+			monthString = String.format("%02d", month);
+		}
+		else
+		{
+			monthString = String.valueOf(month);
+		}
+
+		if (day < 10)
+		{
+			dayString = String.format("%02d", day);
+		}
+		else
+		{
+			dayString = String.valueOf(day);
+		}
+
+		openFile(FILENAMETIME);
+
+		NodeList listOfUser = doc.getElementsByTagName("worktime");
+
+		for (int i = 0; i < listOfUser.getLength(); i++)
+		{
+
+			Node user = listOfUser.item(i);
+
+			if (user.getNodeType() == Node.ELEMENT_NODE)
+			{
+
+				NodeList childNodes = user.getChildNodes();
+
+				for (int j = 0; j < childNodes.getLength(); j++)
+				{
+					Node item = childNodes.item(j);
+
+					if (item.getNodeType() == Node.ELEMENT_NODE && item.getAttributes().getNamedItem("name").getNodeValue().equals(yearString))
+					{
+
+						NodeList monthNodes = item.getChildNodes();
+
+						for (int k = 0; k < monthNodes.getLength(); k++)
+						{
+							Node monthItem = monthNodes.item(k);
+							if (monthItem.getNodeType() == Node.ELEMENT_NODE && monthItem.getAttributes().getNamedItem("name").getNodeValue().equals(monthString))
+							{
+
+								NodeList dayNodes = monthItem.getChildNodes();
+
+								for (int u = 0; u < dayNodes.getLength(); u++)
+								{
+									Node dayItem = dayNodes.item(u);
+									if (dayItem.getNodeType() == Node.ELEMENT_NODE && dayItem.getAttributes().getNamedItem("name").getNodeValue().equals(dayString))
+									{
+
+										NodeList timeNodes = dayItem.getChildNodes();
+
+										for (int v = 0; v < timeNodes.getLength(); v++)
+										{
+											Node timeItem = timeNodes.item(v);
+
+											if ("reported".equalsIgnoreCase(timeItem.getNodeName()))
+											{
+												String rp = timeItem.getTextContent();
+												try
+												{
+													reported = Integer.parseInt(rp);
+												}
+												catch (Exception e)
+												{
+													return 0;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return reported;
+	}
+
+
+	// hole Arbeitsbeginn, Arbeitsende, Pause und Extrapause für Gleitzeitberechnung
 	public String[] getDayData(LocalDate date)
 	{
 
-		String[] begin = {"", "", "", ""};
+		String[] begin = { "", "", "", "" };
 
 		int day = date.getDayOfMonth();
 		int month = date.getMonthValue();
@@ -1213,5 +1463,4 @@ public class UserConfig
 		}
 		return begin;
 	}
-
 }

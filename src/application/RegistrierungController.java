@@ -85,11 +85,12 @@ public class RegistrierungController
 
 		comboboxRegistrierungWochenarbeitszeit.getItems().addAll(Array.stunden);
 		datepickerRegistrierungGeburtsdatum.setEditable(false);
-		//Locale.setDefault(Locale.GERMAN);
 	}
 
+
+    // Bei Registrierung Alter prüfen um mögliche Wochenarbeitszeiten entsprechend anzubieten (unter 16 keine, zwischen 16 und 18 nur 35 Stunden...)
     public void alterBerechnen() throws ParseException {
-		methoden m1 = new methoden();
+		Methoden m1 = new Methoden();
 
 		try {
 
@@ -113,7 +114,8 @@ public class RegistrierungController
 
 
 	}
-
+   //Methode um nach einer erfolgreichen Registration wieder zurück zum Loginfenster zu wechseln
+   // Es wird automatisch die entsprechend ausgewähle Sprache gewählt und geladen
     public void switchToLogin(ActionEvent event) throws IOException
 	{
     	UserConfig uc = new UserConfig();
@@ -181,6 +183,7 @@ public class RegistrierungController
 
 					Scene tableViewscene = new Scene(root);
 					Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+					tableViewscene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 					window.setScene(tableViewscene);
 					window.show();
 				}
@@ -193,7 +196,8 @@ public class RegistrierungController
 		}
 	}
 
-
+   //Methode um wieder zurück zum Loginfenster zu wechseln
+   // Es wird automatisch die entsprechend hinterlegte bzw. abgespeicherte Sprache gewählt und geladen
 	public void switchBack(ActionEvent event) throws IOException
 	{
 

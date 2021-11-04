@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><worktime name="user">
 <year name="2021">
 <month name="11">
-<day name="07">
-<begin>public holiday</begin><end/><break/><extra/><overtime/></day></month></year><year name="2018">
-<month name="11">
-<day name="11">
-<begin>06:00</begin><end>22:00</end><break>45</break><extra>0</extra><overtime>7:15</overtime></day><day name="06">
-<begin>06:00</begin><end>22:00</end><break>45</break><extra>0</extra><overtime>7:15</overtime></day></month></year><year name="2019">
-<month name="11">
-<day name="07">
-<begin>06:00</begin><end>22:00</end><break>45</break><extra>45</extra><overtime>6:30</overtime></day></month></year></worktime>
+<day name="02">
+<begin>06:00</begin><end>22:00</end><break>45</break><extra>0</extra><overtime>9:15</overtime></day><day name="03">
+<begin>06:01</begin><end>22:00</end><break>45</break><extra>24</extra><overtime>8:50</overtime></day></month></year></worktime>

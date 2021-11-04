@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+//Hier werden die Arrays und Variablen global definiert um die Dropdownfelder entsprechend zu füllen
 class Array {
 	public static String[] stunden = { "30", "35", "40" };
 	public static String unter18 = "35";
@@ -24,12 +26,12 @@ class Array {
 	public static String[] jahre = { "2019", "2020", "2021" };
 	public static String[] abwesenheitDE = { "Urlaub", "Feiertag" };
 	public static String[] abwesenheitEN = { "vacation", "public holiday" };
-//	public static Locale locale = new Locale("de");
 	public static Locale locale;
 }
 
 public class Main extends Application {
 
+	//Methode um das Loginfenster zu laden mit der entsprechend gespeicherten Sprache
 	@Override
 	public void start(Stage stage) throws Exception {
 
@@ -56,7 +58,10 @@ public class Main extends Application {
 
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
+		stage.setTitle("©HornhillDev AG");
 		stage.show();
+		
+
 	}
 
 	public static void main(String[] args) {
