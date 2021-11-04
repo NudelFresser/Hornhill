@@ -1,0 +1,344 @@
+/*Style: Default Styles */
+.table-cell.name-column {
+    -fx-background-color: palegreen;
+}
+ 
+.table-view .column-header.name-column {
+    -fx-base: palegreen;
+}
+
+.root {
+	-fx-background-color: white;
+}
+
+.button {
+	-fx-border-width: 1.5px;
+	-fx-border-color: black;
+	-fx-background-radius: 12.0px;
+	-fx-border-radius: 10.0px;
+	-fx-background-color: white;
+	-fx-text-fill: black;
+}
+
+.button:hover {
+	-fx-background-color: #DFDFDF;
+	-fx-border-color: black;
+	-fx-text-fill: black;
+}
+
+
+/*Style: Tabs */
+.tab{
+  -fx-font-family: "Arial Nova";
+  -fx-font-size: 16.0px;
+  -fx-background-color: white;
+  -fx-border-style: solid;
+  -fx-border-size: 1.0px;
+  -fx-border-color: black;
+  -fx-border-radius: 10.0px 10.0px 0.0 0.0;
+  -fx-background-radius: 12.0px 12.0px 0.0 0.0;
+  -fx-padding: 4.0 10.0 4.0 4.0 ;
+}
+
+.tab:hover{
+	-fx-background-color:#DFDFDF;
+}
+
+.tab:selected {
+	-fx-background-color:#8E8E8E;
+}
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+     -fx-border-color: transparent;
+}
+
+
+/*Style: Tracking Tab */
+#tracking .label {
+	-fx-font-family: "Arial Nova";
+	-fx-font-size: 20.0px;
+}
+
+#tracking .text-field {
+	-fx-font-family: "Arial Nova";
+	-fx-border-color: #555555;
+}
+
+#tracking .text-field:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+
+#tracking .combo-box {
+  -fx-border-width: 1.0px;
+  -fx-border-color: black;
+  -fx-background-radius: 0.0px;
+  -fx-background-color: white;
+  -fx-mark-color: black;
+}
+
+#tracking .combo-box:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+
+
+#tracking .combo-box-popup .list-cell:selected{
+	-fx-background-color: #8E8E8E;
+	-fx-text-fill: black;
+}
+
+#tracking .combo-box .combo-box-popup .list-cell:hover {
+    -fx-text-fill: black ;
+    -fx-background-color: #DFDFDF;
+}
+
+#tracking .check-box{
+	-fx-font-family: "Arial Nova";
+	-fx-font-size: 20.0px;
+}
+
+#tracking .check-box .box {
+	-fx-background-color: white; 
+	-fx-border-color: #15171c;
+	
+}
+
+#tracking .check-box:hover .box{
+	-fx-background-color: #FAFAFA;
+}
+
+#tracking .check-box:selected .box {
+	-fx-background-color: #C1C1C1; 
+	-fx-border-color: #15171c;
+}
+
+#tracking .date-picker .arrow-button {
+	-fx-background-radius: 0.0;
+	-fx-background-color: #DFDFDF;
+}
+
+#tracking .date-picker .text-field {
+    -fx-background-color: white;
+}
+
+#tracking .date-picker:hover .text-field {
+	-fx-background-color: #FAFAFA;
+}
+
+#tracking .date-picker .button{
+	-fx-background-color: #ededed;
+	-fx-border-style: solid;
+	-fx-border-color: transparent;
+	-fx-border-width: 1.0;
+}
+
+#tracking .date-picker .button:hover{
+	-fx-background-color: #DFDFDF;
+	-fx-border-style: solid;
+	-fx-border-color: black;
+	-fx-border-width: 1.0;
+}
+
+#tracking .date-picker-popup  {
+	-fx-border-color: transparent;
+}
+
+#tracking .date-picker-popup .month-year-pane {
+	-fx-background-color: #DFDFDF;
+}
+#tracking .date-picker-popup .month-year-pane .label {
+	-fx-text-fill: black;
+	-fx-font-family: "Arial Nova";
+	-fx-font-size: 12.0px;
+}
+
+#tracking .date-picker .cell:hover {
+	-fx-background-color: #DFDFDF;
+	-fx-text-fill: black;
+	-fx-border-color: black;
+}
+#tracking .date-picker .cell:focused {
+	-fx-background-color: #DFDFDF;
+	-fx-text-fill: black;
+}
+
+
+/*Style: Calendar Tab */
+#calendar .label{
+	-fx-font-family: "Arial Nova";
+	-fx-font-size: 20.0px;
+}
+
+#calendar .text-field {
+	-fx-font-family: "Arial Nova";
+	-fx-border-color: #555555;
+}
+
+#calendar .text-field:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+
+#calendar .combo-box {
+  -fx-border-width: 1.0px;
+  -fx-border-color: black;
+  -fx-background-radius: 0.0px;
+  -fx-background-color: white;
+  -fx-mark-color: black;
+}
+
+#calendar .combo-box:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+
+
+#calendar .combo-box .menu-item:focused{
+	-fx-background-color: #DFDFDF;
+	-fx-text-fill: black;
+}
+
+#calendar .combo-box .menu-item:focused > .label {
+	-fx-text-fill: black;
+}
+
+#calendar .table-view .label{
+	-fx-font-family: "Arial Nova";
+	-fx-font-size: 12.0px;
+}
+
+#calendar .table-view .column-header{
+   -fx-background-color: #8E8E8E;
+   -fx-border-style: solid;
+}
+
+#calendar .combo-box {
+  -fx-border-width: 1.0px;
+  -fx-border-color: black;
+  -fx-background-radius: 0.0px;
+  -fx-background-color: white;
+  -fx-mark-color: black;
+}
+
+#calendar .combo-box:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+
+
+#calendar .combo-box-popup .list-cell:selected{
+	-fx-background-color: #8E8E8E;
+	-fx-text-fill: black;
+}
+
+#calendar .combo-box .combo-box-popup .list-cell:hover {
+    -fx-text-fill: black ;
+    -fx-background-color: #DFDFDF;
+}
+
+
+/*Style: Settings Tab*/
+#settings .label{
+	-fx-font-family: "Arial Nova";
+	-fx-font-size: 20.0px;
+}
+
+#settings .text-field {
+	-fx-font-family: "Arial Nova";
+	-fx-border-color: #555555;
+}
+
+#settings .text-field:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+
+#settings .radio-button .radio {
+	-fx-background-color: white; 
+	-fx-border-color: #15171c;
+	-fx-background-radius: 140.0px;
+    -fx-border-radius: 130.0px;
+}
+
+#settings .radio-button:hover .radio{
+	-fx-background-color: #FAFAFA;
+}
+
+#settings .radio-button:selected .radio {
+	-fx-background-color: #C1C1C1; 
+	-fx-border-color: #15171c;
+	-fx-background-radius: 140.0px;
+    -fx-border-radius: 130.0px;
+}
+
+#settings .choice-box {
+  -fx-border-width: 1.0px;
+  -fx-border-color: black;
+  -fx-background-radius: 0.0px;
+  -fx-background-color: white;
+  -fx-mark-color: black;
+}
+
+#settings .choice-box:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+
+
+#settings .choice-box .menu-item:focused{
+	-fx-background-color: #DFDFDF;
+	-fx-text-fill: black;
+}
+
+#settings .choice-box .menu-item:focused > .label {
+	-fx-text-fill: black;
+}
+
+#settings .radio-button .radio {
+	-fx-background-color: white; 
+	-fx-border-color: #15171c;
+	-fx-background-radius: 140.0px;
+    -fx-border-radius: 130.0px;
+}
+
+#settings .radio-button:hover .radio{
+	-fx-background-color: #FAFAFA;
+}
+
+#settings .radio-button:selected .radio {
+	-fx-background-color: #C1C1C1; 
+	-fx-border-color: #15171c;
+	-fx-background-radius: 140.0px;
+    -fx-border-radius: 130.0px;
+}
+
+
+/*Style: Violation Tab */
+#violation .label{
+	-fx-font-family: "Arial Nova";
+	-fx-font-size: 20.0px;
+}
+
+#violation .text-field {
+	-fx-font-family: "Arial Nova";
+	-fx-border-color: #555555;
+}
+
+#violation .text-field:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+} 
+
+#violation .text-area{
+	-fx-font-family: "Arial Nova";
+	-fx-border-color: #555555;
+}
+
+
+
+#violation .text-area:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
+

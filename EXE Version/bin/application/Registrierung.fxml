@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPaneRegistrierung" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistrierungController">
+   <children>
+      <Label fx:id="labelRegistrierungNutzername" layoutX="56.0" layoutY="27.0" text="%label.username" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="27.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelRegistrierungPasswort" layoutX="57.0" layoutY="75.0" text="%label.password" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="75.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelRegistrierungPasswortwiederholen" layoutX="56.0" layoutY="123.0" text="%label.repeatpassword" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="123.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelRegistrierungGeburtsdatum" layoutX="56.0" layoutY="171.0" text="%label.birthday" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="171.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelRegistrierungSprache" layoutX="58.0" layoutY="219.0" text="%label.language" AnchorPane.leftAnchor="58.0" AnchorPane.topAnchor="219.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelRegistrierungWochenarbeitszeit" layoutX="57.0" layoutY="262.0" text="%label.workinghours" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="262.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textfieldRegistrierungNutzername" layoutX="294.0" layoutY="26.0" prefHeight="31.0" prefWidth="276.0" promptText="%text.username" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="26.0" />
+      <PasswordField fx:id="passwortfeldRegistrierungPasswort" layoutX="294.0" layoutY="74.0" prefHeight="31.0" prefWidth="276.0" promptText="%text.password" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="74.0" />
+      <PasswordField fx:id="passwortfeldRegistrierungPasswortwiederholen" layoutX="294.0" layoutY="122.0" prefHeight="31.0" prefWidth="276.0" promptText="%text.password" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="122.0" />
+      <DatePicker fx:id="datepickerRegistrierungGeburtsdatum" layoutX="294.0" layoutY="170.0" onAction="#alterBerechnen" prefHeight="31.0" prefWidth="276.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="170.0" />
+      <RadioButton fx:id="radiobuttonRegistrierungDeutsch" layoutX="294.0" layoutY="221.0" mnemonicParsing="false" text="%rbutton.german" AnchorPane.leftAnchor="294.0" AnchorPane.topAnchor="221.0">
+         <font>
+            <Font name="Arial Nova" size="20.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="Sprache" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="radiobuttonRegistrierungEnglisch" layoutX="368.0" layoutY="221.0" mnemonicParsing="false" text="%rbutton.english" toggleGroup="$Sprache" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="221.0">
+         <font>
+            <Font name="Arial Nova" size="20.0" />
+         </font>
+      </RadioButton>
+      <ChoiceBox fx:id="comboboxRegistrierungWochenarbeitszeit" layoutX="294.0" layoutY="264.0" prefHeight="25.0" prefWidth="276.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="264.0" />
+      <Button fx:id="buttonRegistrierenZurueck" layoutX="56.0" layoutY="319.0" mnemonicParsing="false" onAction="#switchBack" text="%button.back" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="56.0">
+         <font>
+            <Font name="Arial Nova" size="20.0" />
+         </font>
+      </Button>
+
+      <Button layoutX="405.0" layoutY="319.0" mnemonicParsing="false" onAction="#switchToLogin" text="%button.signup" AnchorPane.bottomAnchor="42.0" AnchorPane.rightAnchor="29.0">
+         <font>
+            <Font name="Arial Nova" size="20.0" />
+            </font>
+      </Button>
+   </children>
+</AnchorPane>
