@@ -47,6 +47,7 @@ public class PasswortVergessenController {
 	}
 
     //Methode um wieder zurück zum Loginfenster zu wechseln
+    // Es wird automatisch die entsprechend hinterlegte bzw. abgespeicherte Sprache gewählt und geladen
 	public void switchBack(ActionEvent event) throws IOException {
 
 		FXMLLoader loader = new FXMLLoader();

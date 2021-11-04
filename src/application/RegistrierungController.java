@@ -115,6 +115,7 @@ public class RegistrierungController
 
 	}
    //Methode um nach einer erfolgreichen Registration wieder zurück zum Loginfenster zu wechseln
+   // Es wird automatisch die entsprechend ausgewähle Sprache gewählt und geladen
     public void switchToLogin(ActionEvent event) throws IOException
 	{
     	UserConfig uc = new UserConfig();
@@ -196,6 +197,7 @@ public class RegistrierungController
 	}
 
    //Methode um wieder zurück zum Loginfenster zu wechseln
+   // Es wird automatisch die entsprechend hinterlegte bzw. abgespeicherte Sprache gewählt und geladen
 	public void switchBack(ActionEvent event) throws IOException
 	{
 

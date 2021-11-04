@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -310,7 +311,7 @@ public class SampleController {
 		// füllen der Kalender-Tabelle mit den Daten aus der worktime.xml
 		UserConfig uc = new UserConfig();
 		List<Person> zeiten = uc.getTimes();
-
+		Collections.reverse(zeiten);
 		for (Person p : zeiten) {
 
 			tableViewKalenderKalenderansicht.getItems().add(p);
@@ -331,13 +332,18 @@ public class SampleController {
 
 	// Methode um die Tableview bzw. einzelne Zeilen farbig hervorzuheben
 	public void tableViewRowColor() {
+		UserConfig uc = new UserConfig();
 		tableViewKalenderKalenderansicht.setRowFactory(tv -> new TableRow<Person>() {
 			@Override
 			protected void updateItem(Person item, boolean empty) {
 				super.updateItem(item, empty);
 
-				if (item != null && item.getPause().equals("25")) {
-					setStyle("-fx-background-color:green;");
+				LocalDate lc = birthdayColumn.getCellData(item);
+				if (item != null && uc.getReported(lc) == 2) {
+					setStyle("-fx-background-color: red ;");
+				}
+				if (item != null && uc.getReported(lc) == 1) {
+					setStyle(null);
 				}
 			}
 		});
@@ -443,9 +449,17 @@ public class SampleController {
 					String overtime = "";
 					if (flexitime < 0) {
 						flexitime = flexitime * (-1);
+						if((flexitime%60)<10) {
+							overtime = "-" + flexitime / 60 + ":0" + flexitime % 60;
+						}else {
 						overtime = "-" + flexitime / 60 + ":" + flexitime % 60;
+						}
 					} else {
+						if((flexitime%60)<10) {
+							overtime = flexitime / 60 + ":0" + flexitime % 60;
+						}else {
 						overtime = flexitime / 60 + ":" + flexitime % 60;
+						}
 					}
 
 					uc.writeOvertime(date, overtime);
@@ -792,9 +806,11 @@ public class SampleController {
 
 	}
 
-	// Funktionalität des Buttons "Logout" bei den Einstellungen
+	// Funktionalität des Buttons "Logout" bei den Einstellungen.
 	// Man springt aus dem Programm und es wird automatisch wieder der Loginbereich
-	// geladen
+	// geladen.
+	// Es wird automatisch die entsprechend hinterlegte bzw. abgespeicherte Sprache
+	// gewählt und geladen.
 	public void switchBack(ActionEvent event) throws IOException {
 
 		// Gewährleistung, dass die richtige Sprache geladen wird
@@ -846,7 +862,7 @@ public class SampleController {
 		}
 	}
 
-//schreibt die Gleitzeit ins Jahresfed 
+	// schreibt die Gleitzeit ins Jahresfed
 	// je nachem welches Jahr ausgewählt wurde (nichts=> aktuelles)
 	public void schreibeGleitzeitJahr(ActionEvent event) throws IOException, ParseException {
 		// auswahl Jahr
@@ -861,10 +877,17 @@ public class SampleController {
 		// schreiben
 		if (gleitzeitJahr < 0) {
 			gleitzeitJahr = gleitzeitJahr * (-1);
-			textfieldKalenderJahresStunden.setText("-" + gleitzeitJahr / 60 + ":" + gleitzeitJahr % 60);
-
+			if ((gleitzeitJahr % 60) < 10) {
+				textfieldKalenderJahresStunden.setText("-" + gleitzeitJahr / 60 + ":0" + gleitzeitJahr % 60);
+			} else {
+				textfieldKalenderJahresStunden.setText("-" + gleitzeitJahr / 60 + ":" + gleitzeitJahr % 60);
+			}
 		} else {
-			textfieldKalenderJahresStunden.setText("" + gleitzeitJahr / 60 + ":" + gleitzeitJahr % 60);
+			if ((gleitzeitJahr % 60) < 10) {
+				textfieldKalenderJahresStunden.setText("" + gleitzeitJahr / 60 + ":0" + gleitzeitJahr % 60);
+			} else {
+				textfieldKalenderJahresStunden.setText("" + gleitzeitJahr / 60 + ":" + gleitzeitJahr % 60);
+			}
 		}
 
 		int ap = ampel(gleitzeitJahr);
@@ -886,7 +909,7 @@ public class SampleController {
 			break;
 		}
 
-//aufruf der Quartals und Monatsschreiben Methode 
+		// aufruf der Quartals und Monatsschreiben Methode
 		// sie ändern sich auch jenachdem welches Jahr ausgewählt wurde
 		schreibeGleitzeitMonat(event);
 		schreibeGleitzeitQuartal(event);
@@ -943,10 +966,17 @@ public class SampleController {
 		// schreiben
 		if (gleitzeitQuartal < 0) {
 			gleitzeitQuartal = gleitzeitQuartal * (-1);
-			textfieldKalenderQuartalsStunden.setText("-" + gleitzeitQuartal / 60 + ":" + gleitzeitQuartal % 60);
-
+			if ((gleitzeitQuartal % 60) < 10) {
+				textfieldKalenderQuartalsStunden.setText("-" + gleitzeitQuartal / 60 + ":0" + gleitzeitQuartal % 60);
+			} else {
+				textfieldKalenderQuartalsStunden.setText("-" + gleitzeitQuartal / 60 + ":" + gleitzeitQuartal % 60);
+			}
 		} else {
-			textfieldKalenderQuartalsStunden.setText("" + gleitzeitQuartal / 60 + ":" + gleitzeitQuartal % 60);
+			if ((gleitzeitQuartal % 60) < 10) {
+				textfieldKalenderQuartalsStunden.setText("" + gleitzeitQuartal / 60 + ":0" + gleitzeitQuartal % 60);
+			} else {
+				textfieldKalenderQuartalsStunden.setText("" + gleitzeitQuartal / 60 + ":" + gleitzeitQuartal % 60);
+			}
 		}
 	}
 
@@ -968,11 +998,19 @@ public class SampleController {
 		// schreiben
 		if (gleitzeitMonat < 0) {
 			gleitzeitMonat = gleitzeitMonat * (-1);
-			textfieldKalenderMonatsStunden.setText("-" + gleitzeitMonat / 60 + ":" + gleitzeitMonat % 60);
+			if ((gleitzeitMonat % 60) < 10) {
+				textfieldKalenderMonatsStunden.setText("-" + gleitzeitMonat / 60 + ":0" + gleitzeitMonat % 60);
+			} else {
+				textfieldKalenderMonatsStunden.setText("-" + gleitzeitMonat / 60 + ":" + gleitzeitMonat % 60);
+			}
 			gleitzeitMonat = gleitzeitMonat * (-1);
 
 		} else {
-			textfieldKalenderMonatsStunden.setText("" + gleitzeitMonat / 60 + ":" + gleitzeitMonat % 60);
+			if ((gleitzeitMonat % 60) < 10) {
+				textfieldKalenderMonatsStunden.setText("" + gleitzeitMonat / 60 + ":0" + gleitzeitMonat % 60);
+			} else {
+				textfieldKalenderMonatsStunden.setText("" + gleitzeitMonat / 60 + ":" + gleitzeitMonat % 60);
+			}
 		}
 		return gleitzeitMonat;
 
@@ -1035,6 +1073,9 @@ public class SampleController {
 	public void arbeitszeitverletzung(int year) {
 		textareaViolationtype.setText("");
 		textfieldViolationDay.setText("");
+		buttonReportViolation.setVisible(false);
+		buttonKalenderSwitchToTimeViolation.setStyle("-fx-background-color: red");
+		buttonKalenderSwitchToTimeViolation.setVisible(false);
 		UserConfig uc = new UserConfig();
 		boolean azMonatverl = true;
 		Methoden methode = new Methoden();
@@ -1076,7 +1117,14 @@ public class SampleController {
 							int minn = Integer.parseInt(gz[0].split(":")[1]);
 							int aa = (hn * 60 + minn);
 							if ((aevorherigerTag + aa) < (11 * 60)) {// az verletzung
-								azVerletzung = azVerletzung + "Weniger als 11h Pause zwischen 2 ArbeitsTagen";
+
+								if (uc.getLanguage() == 1) {
+									azVerletzung = azVerletzung
+											+ "\nThere were less than 11 hours break between the two working days";
+								} else {
+									azVerletzung = azVerletzung + "Weniger als 11h Pause zwischen 2 Arbeitstagen";
+								}
+
 							}
 							int h = Integer.parseInt(gz[1].split(":")[0]);
 							int min = Integer.parseInt(gz[1].split(":")[1]);
@@ -1097,14 +1145,21 @@ public class SampleController {
 							tatlAz = tatlAz - Integer.parseInt(gz[3]);
 
 							if (tatlAz > (10 * 60)) {
-								azVerletzung = azVerletzung + "\nMehr als 10h gearbeitet";
-
+								if (uc.getLanguage() == 1) {
+									azVerletzung = azVerletzung + "\nWorked more than 10h!";
+								} else {
+									azVerletzung = azVerletzung + "\nMehr als 10h gearbeitet";
+								}
 								// Az Verletzung
 							}
 
 							DayOfWeek dayOfWeek = DayOfWeek.from(date);
 							if (dayOfWeek.getValue() == 7) {
-								azVerletzung = azVerletzung + "\nAm Sonntag gearbeitet";
+								if (uc.getLanguage() == 1) {
+									azVerletzung = azVerletzung + "\nWorked on a sunday";
+								} else {
+									azVerletzung = azVerletzung + "\nAm Sonntag gearbeitet";
+								}
 
 							}
 						}
@@ -1131,6 +1186,7 @@ public class SampleController {
 						textfieldViolationDay.setText(i + "-" + m + "-" + year);
 						uc.writeReported(date, "2");
 						buttonKalenderSwitchToTimeViolation.setVisible(true);
+						buttonReportViolation.setVisible(true);
 					}
 				} // for Tag
 
@@ -1172,24 +1228,54 @@ public class SampleController {
 					}
 				}
 			}
-			if (azMonatverl==true) {
+			if (azMonatverl == true) {
 				for (int i = 5; i < dMonat.length; i++) {
 					double gesdAz = 0;
-					 if ((dMonat[i - 5] == 0)) {
-						 if ((dMonat[i] > (8 * 60))) {
-								textareaViolationtype
-										.setText("Im Monat " + (i - 4) + " arbeiten sie im Schintt mehr als 8 Stunden");
-								buttonKalenderSwitchToTimeViolation.setVisible(true);
+					double gesdAzZ = 0;
+
+					if (dMonat[i - 5] == 0) {
+						for (int x = i; x <= i + 5; x++) {
+							gesdAzZ = 0;
+							int z =0;
+							if (x < 17) {
+								gesdAzZ = gesdAzZ+ dMonat[x];
+								z++;
 							}
+							if (gesdAzZ > (8 * 60*z)) {
+								if ((dMonat[i] > (8 * 60*2))) {
+									if (uc.getLanguage() == 1) {
+										textareaViolationtype.setText("In the month " + (i - 4)
+												+ " you were working more than 8 hours in average.\nYou don't have to report this but please try to equaize it in the next 6 months.");
+										buttonKalenderSwitchToTimeViolation.setVisible(true);
+										buttonKalenderSwitchToTimeViolation.setStyle("-fx-background-color: orange");
+									} else {
+										textareaViolationtype.setText("Im Monat " + (i - 4)
+												+ " arbeiten Sie im Schnitt mehr als 8 Stunden. \nSie müssen dies nicht melden aber achten sie darauf dies in den nächsten 6 Monaten auszugleichen.");
+										buttonKalenderSwitchToTimeViolation.setVisible(true);
+										buttonKalenderSwitchToTimeViolation.setStyle("-fx-background-color: orange");
+									}
+								}
+							}
+						}
+						
 					} else {
 						for (int x = i - 5; x <= i; x++) {
 							gesdAz += dMonat[x];
 						}
-						if (gesdAz > (8 * 60)) {
-							textareaViolationtype.setText(
-									"Sie haben innerhalb der letzten 6 Monate im Schnitt länger als 8 Stunden gearbeitet \nStand: "
-											+ (i - 4) + "Monat");
-							buttonKalenderSwitchToTimeViolation.setVisible(true);
+						if (gesdAz > (8 * 60*6)) {
+							if (uc.getLanguage() == 1) {
+								textareaViolationtype
+										.setText("You have worked in the past six months in average more than 8 hours"
+												+ (i - 4) + "Month");
+								buttonKalenderSwitchToTimeViolation.setVisible(true);
+
+							} else {
+
+								textareaViolationtype.setText(
+										"Sie haben innerhalb der letzten 6 Monate im Schnitt länger als 8 Stunden gearbeitet"
+												+ (i - 4) + "Monat");
+								buttonKalenderSwitchToTimeViolation.setVisible(true);
+							}
 						}
 					}
 				}
@@ -1202,14 +1288,14 @@ public class SampleController {
 				String azVerletzung = "";
 				YearMonth yearMonthObject = YearMonth.of(year, m);
 				int daysInMonth = yearMonthObject.lengthOfMonth();
+				int aevorherigerTag = -1;
 				for (int i = 1; i <= daysInMonth; i++) {
 					LocalDate date = LocalDate.of(year, m, i);
 
-					if (uc.getReported(date) == 0|| uc.getReported(date) == 2) {
+					if (uc.getReported(date) == 0) {
 						String[] gz = uc.getDayData(date);
 						azVerletzung = "";
 						// Nachtruhe
-						int aevorherigerTag = -1;
 						if (gz[0].equals("Urlaub") || gz[0].equals("Feiertag") || gz[0].equals("public holiday")
 								|| gz[0].equals("vacation") || gz[0].equals("")) {// wenn Tag Urlaub || nicht gearbeitet
 																					// => egal
@@ -1222,8 +1308,16 @@ public class SampleController {
 							int hn = Integer.parseInt(gz[0].split(":")[0]);
 							int minn = Integer.parseInt(gz[0].split(":")[1]);
 							int aa = (hn * 60 + minn);
-							if ((aevorherigerTag + aa) < (12 * 60)) {// az verletzung
-								azVerletzung = azVerletzung + "Weniger als 12h Pause zwischen 2 ArbeitsTagen";
+							if ((aevorherigerTag + aa) < (12 * 60)) {
+								if (uc.getLanguage() == 1) {
+									// az verletzung
+									azVerletzung = azVerletzung
+											+ "There were less than 12 hours break between the two different days";
+
+								} else {
+									azVerletzung = azVerletzung + "Weniger als 12h Pause zwischen 2 Arbeitstagen";
+								}
+
 							}
 							int h = Integer.parseInt(gz[1].split(":")[0]);
 							int min = Integer.parseInt(gz[1].split(":")[1]);
@@ -1245,26 +1339,63 @@ public class SampleController {
 							tatlAz = tatlAz - Integer.parseInt(gz[3]);
 
 							if (tatlAz > (8 * 60)) {
-								azVerletzung = azVerletzung + "\nMehr als 8h gearbeitet";
+								if (uc.getLanguage() == 1) {
+									azVerletzung = azVerletzung + "\nWorked more than 8h!";
+								} else {
+									azVerletzung = azVerletzung
+											+ "\nMehr als 8h gearbeitet --> Verstoß gegen das JArbSchG";
+								}
+
 								// Az Verletzung
 							}
 
 							// nicht vor 6:00 / nach 20:00
 							if (Integer.parseInt(gz[0].split(":")[0]) < 6) {
-								azVerletzung = azVerletzung + "\nVor 6:00 gearbeitet";
+								if (uc.getLanguage() == 1) {
+									// az verletzung
+									azVerletzung = azVerletzung + "\nYou have worked bevor 06:00 A.M.";
+
+								} else {
+									azVerletzung = azVerletzung + "\nVor 06:00 gearbeitet";
+								}
+
 							} else if (Integer.parseInt(gz[1].split(":")[0]) > 22) {
-								azVerletzung = azVerletzung + "\nNach 22:00 gearbeitet";
+								if (uc.getLanguage() == 1) {
+									// az verletzung
+									azVerletzung = azVerletzung + "\nYou have worked after 10:00 P.M.";
+
+								} else {
+									azVerletzung = azVerletzung + "\nNach 22:00 gearbeitet";
+								}
+
 							} else if (Integer.parseInt(gz[1].split(":")[0]) == 22
 									&& Integer.parseInt(gz[1].split(":")[1]) > 0) {
-								azVerletzung = azVerletzung + "\nNach 22:00 gearbeitet";
+
+								if (uc.getLanguage() == 1) {
+									// az verletzung
+									azVerletzung = azVerletzung + "\nYou have worked after 10:00 P.M.";
+
+								} else {
+									azVerletzung = azVerletzung + "\nNach 22:00 gearbeitet";
+								}
+
 							}
 
 							DayOfWeek dayOfWeek = DayOfWeek.from(date);
 							if (dayOfWeek.getValue() == 7) {
-								azVerletzung = azVerletzung + "\nAm Sonntag gearbeitet";
+								if (uc.getLanguage() == 1) {
+									azVerletzung = azVerletzung + "\nWorked on a sunday.";
+								} else {
+									azVerletzung = azVerletzung + "\nAm Sonntag gearbeitet";
+								}
 							}
 							if (dayOfWeek.getValue() == 6) {
-								azVerletzung = azVerletzung + "\nAm Samstag gearbeitet";
+								if (uc.getLanguage() == 1) {
+									azVerletzung = azVerletzung + "\nWorked on a saturday";
+								} else {
+
+									azVerletzung = azVerletzung + "\nAm Samstag gearbeitet";
+								}
 							}
 						}
 
@@ -1274,12 +1405,15 @@ public class SampleController {
 						textfieldViolationDay.setText(i + "-" + m + "-" + year);
 						uc.writeReported(date, "2");
 						buttonKalenderSwitchToTimeViolation.setVisible(true);
+						buttonReportViolation.setVisible(true);
 					}
 				} // for
 
 			}
 		}
-
+//		if (textareaViolationtype.getText().isEmpty() == true) {
+//			buttonKalenderSwitchToTimeViolation.setVisible(false);
+//		}
 	}
 
 	// Melden der Azverletzung
@@ -1293,15 +1427,18 @@ public class SampleController {
 			int t = Integer.parseInt(tag.split("-")[0]);
 			LocalDate d = LocalDate.of(y, m, t);
 			uc.writeReported(d, "1");
-			buttonReportViolation.setOnMouseClicked(e -> tabPaneAnsicht.getSelectionModel().select(2));
+			buttonReportViolation.setOnMouseClicked(e -> tabPaneAnsicht.getSelectionModel().select(1));
 			try {
 				schreibeGleitzeitJahr(null);
+				tableViewRowColor();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			} catch (ParseException e1) {
 				e1.printStackTrace();
-			};
+			}
+			;
 		}
 
+		tableViewRowColor();
 	}
 }

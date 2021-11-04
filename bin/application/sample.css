@@ -14,8 +14,8 @@
 .button {
 	-fx-border-width: 1.5px;
 	-fx-border-color: black;
-	-fx-background-radius: 12px;
-	-fx-border-radius: 10px;
+	-fx-background-radius: 12.0px;
+	-fx-border-radius: 10.0px;
 	-fx-background-color: white;
 	-fx-text-fill: black;
 }
@@ -30,14 +30,14 @@
 /*Style: Tabs */
 .tab{
   -fx-font-family: "Arial Nova";
-  -fx-font-size: 16px;
+  -fx-font-size: 16.0px;
   -fx-background-color: white;
   -fx-border-style: solid;
-  -fx-border-size: 1px;
+  -fx-border-size: 1.0px;
   -fx-border-color: black;
-  -fx-border-radius: 10px 10px 0 0;
-  -fx-background-radius: 12px 12px 0 0;
-  -fx-padding: 4 10 4 4 ;
+  -fx-border-radius: 10.0px 10.0px 0.0 0.0;
+  -fx-background-radius: 12.0px 12.0px 0.0 0.0;
+  -fx-padding: 4.0 10.0 4.0 4.0 ;
 }
 
 .tab:hover{
@@ -56,7 +56,7 @@
 /*Style: Tracking Tab */
 #tracking .label {
 	-fx-font-family: "Arial Nova";
-	-fx-font-size: 20px;
+	-fx-font-size: 20.0px;
 }
 
 #tracking .text-field {
@@ -70,9 +70,9 @@
 }
 
 #tracking .combo-box {
-  -fx-border-width: 1px;
+  -fx-border-width: 1.0px;
   -fx-border-color: black;
-  -fx-background-radius: 0px;
+  -fx-background-radius: 0.0px;
   -fx-background-color: white;
   -fx-mark-color: black;
 }
@@ -95,7 +95,7 @@
 
 #tracking .check-box{
 	-fx-font-family: "Arial Nova";
-	-fx-font-size: 20px;
+	-fx-font-size: 20.0px;
 }
 
 #tracking .check-box .box {
@@ -114,7 +114,7 @@
 }
 
 #tracking .date-picker .arrow-button {
-	-fx-background-radius: 0;
+	-fx-background-radius: 0.0;
 	-fx-background-color: #DFDFDF;
 }
 
@@ -130,14 +130,14 @@
 	-fx-background-color: #ededed;
 	-fx-border-style: solid;
 	-fx-border-color: transparent;
-	-fx-border-width: 1;
+	-fx-border-width: 1.0;
 }
 
 #tracking .date-picker .button:hover{
 	-fx-background-color: #DFDFDF;
 	-fx-border-style: solid;
 	-fx-border-color: black;
-	-fx-border-width: 1;
+	-fx-border-width: 1.0;
 }
 
 #tracking .date-picker-popup  {
@@ -150,7 +150,7 @@
 #tracking .date-picker-popup .month-year-pane .label {
 	-fx-text-fill: black;
 	-fx-font-family: "Arial Nova";
-	-fx-font-size: 12px;
+	-fx-font-size: 12.0px;
 }
 
 #tracking .date-picker .cell:hover {
@@ -167,7 +167,7 @@
 /*Style: Calendar Tab */
 #calendar .label{
 	-fx-font-family: "Arial Nova";
-	-fx-font-size: 20px;
+	-fx-font-size: 20.0px;
 }
 
 #calendar .text-field {
@@ -181,9 +181,9 @@
 }
 
 #calendar .combo-box {
-  -fx-border-width: 1px;
+  -fx-border-width: 1.0px;
   -fx-border-color: black;
-  -fx-background-radius: 0px;
+  -fx-background-radius: 0.0px;
   -fx-background-color: white;
   -fx-mark-color: black;
 }
@@ -205,7 +205,7 @@
 
 #calendar .table-view .label{
 	-fx-font-family: "Arial Nova";
-	-fx-font-size: 12px;
+	-fx-font-size: 12.0px;
 }
 
 #calendar .table-view .column-header{
@@ -214,9 +214,9 @@
 }
 
 #calendar .combo-box {
-  -fx-border-width: 1px;
+  -fx-border-width: 1.0px;
   -fx-border-color: black;
-  -fx-background-radius: 0px;
+  -fx-background-radius: 0.0px;
   -fx-background-color: white;
   -fx-mark-color: black;
 }
@@ -241,7 +241,7 @@
 /*Style: Settings Tab*/
 #settings .label{
 	-fx-font-family: "Arial Nova";
-	-fx-font-size: 20px;
+	-fx-font-size: 20.0px;
 }
 
 #settings .text-field {
@@ -257,8 +257,8 @@
 #settings .radio-button .radio {
 	-fx-background-color: white; 
 	-fx-border-color: #15171c;
-	-fx-background-radius: 140px;
-    -fx-border-radius: 130px;
+	-fx-background-radius: 140.0px;
+    -fx-border-radius: 130.0px;
 }
 
 #settings .radio-button:hover .radio{
@@ -268,14 +268,14 @@
 #settings .radio-button:selected .radio {
 	-fx-background-color: #C1C1C1; 
 	-fx-border-color: #15171c;
-	-fx-background-radius: 140px;
-    -fx-border-radius: 130px;
+	-fx-background-radius: 140.0px;
+    -fx-border-radius: 130.0px;
 }
 
 #settings .choice-box {
-  -fx-border-width: 1px;
+  -fx-border-width: 1.0px;
   -fx-border-color: black;
-  -fx-background-radius: 0px;
+  -fx-background-radius: 0.0px;
   -fx-background-color: white;
   -fx-mark-color: black;
 }
@@ -298,8 +298,8 @@
 #settings .radio-button .radio {
 	-fx-background-color: white; 
 	-fx-border-color: #15171c;
-	-fx-background-radius: 140px;
-    -fx-border-radius: 130px;
+	-fx-background-radius: 140.0px;
+    -fx-border-radius: 130.0px;
 }
 
 #settings .radio-button:hover .radio{
@@ -309,15 +309,15 @@
 #settings .radio-button:selected .radio {
 	-fx-background-color: #C1C1C1; 
 	-fx-border-color: #15171c;
-	-fx-background-radius: 140px;
-    -fx-border-radius: 130px;
+	-fx-background-radius: 140.0px;
+    -fx-border-radius: 130.0px;
 }
 
 
 /*Style: Violation Tab */
 #violation .label{
 	-fx-font-family: "Arial Nova";
-	-fx-font-size: 20px;
+	-fx-font-size: 20.0px;
 }
 
 #violation .text-field {
@@ -330,4 +330,15 @@
 	-fx-border-style: solid;
 } 
 
+#violation .text-area{
+	-fx-font-family: "Arial Nova";
+	-fx-border-color: #555555;
+}
+
+
+
+#violation .text-area:hover {
+	-fx-background-color: #FAFAFA;
+	-fx-border-style: solid;
+}
 

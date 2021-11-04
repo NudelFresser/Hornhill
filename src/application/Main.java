@@ -58,7 +58,10 @@ public class Main extends Application {
 
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
+		stage.setTitle("©HornhillDev AG");
 		stage.show();
+		
+
 	}
 
 	public static void main(String[] args) {

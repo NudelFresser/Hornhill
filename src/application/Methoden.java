@@ -205,7 +205,7 @@ public String MaxStundenErlaubt() throws ParseException {
 		startStunde = 6;
 		startMinute = 0;
 	}
-
+	
 
 	long ergebnisStunde = startStunde + maxerlaubt;
 	long ergebnisMinute = startMinute + pauseExtra;
@@ -291,6 +291,7 @@ public String MaxStundenErlaubt() throws ParseException {
 		}
 		if(endeStunde > 22) {
 			endeStunde = 22;
+			endeMinute = 0;
 		}
 
 		ArbeitohnePauseStunde = endeStunde - startStunde;
