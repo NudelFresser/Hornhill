@@ -85,11 +85,12 @@ public class RegistrierungController
 
 		comboboxRegistrierungWochenarbeitszeit.getItems().addAll(Array.stunden);
 		datepickerRegistrierungGeburtsdatum.setEditable(false);
-		//Locale.setDefault(Locale.GERMAN);
 	}
 
+
+    // Bei Registrierung Alter prüfen um mögliche Wochenarbeitszeiten entsprechend anzubieten (unter 16 keine, zwischen 16 und 18 nur 35 Stunden...)
     public void alterBerechnen() throws ParseException {
-		methoden m1 = new methoden();
+		Methoden m1 = new Methoden();
 
 		try {
 

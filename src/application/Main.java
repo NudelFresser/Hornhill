@@ -26,7 +26,6 @@ class Array {
 	public static String[] jahre = { "2019", "2020", "2021" };
 	public static String[] abwesenheitDE = { "Urlaub", "Feiertag" };
 	public static String[] abwesenheitEN = { "vacation", "public holiday" };
-//	public static Locale locale = new Locale("de");
 	public static Locale locale;
 }
 
