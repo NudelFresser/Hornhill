@@ -80,7 +80,7 @@ public class SampleController {
 	private DatePicker birthdayDatePicker;
 
 	@FXML
-	private Button buttonZeiterfassungDaten‹bernehmen;
+	private Button buttonZeiterfassungDaten√úbernehmen;
 
 	@FXML
 	private Label labelEinstellungenAltesPasswort;
@@ -116,7 +116,7 @@ public class SampleController {
 	private TextField textfieldEinstellungenZweiteWarnstufe;
 
 	@FXML
-	private Button buttonEinstellungenEinstellungen‹bernehmen;
+	private Button buttonEinstellungenEinstellungen√úbernehmen;
 
 	@FXML
 	private Label labelEinstellungenNeuesPasswort1;
@@ -242,7 +242,7 @@ public class SampleController {
 		assert textfieldZeiterfassungArbeitsende != null : "fx:id=\"textfieldZeiterfassungArbeitsende\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert textfieldZeiterfassungZusatzpause != null : "fx:id=\"textfieldZeiterfassungZusatzpause\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert birthdayDatePicker != null : "fx:id=\"datepickerZeiterfassungTag\" was not injected: check your FXML file 'Sample.fxml'.";
-		assert buttonZeiterfassungDaten‹bernehmen != null : "fx:id=\"buttonZeiterfassungDaten‹bernehmen\" was not injected: check your FXML file 'Sample.fxml'.";
+		assert buttonZeiterfassungDaten√úbernehmen != null : "fx:id=\"buttonZeiterfassungDaten√úbernehmen\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert labelEinstellungenAltesPasswort != null : "fx:id=\"labelEinstellungenAltesPasswort\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert labelEinstellungenSprache != null : "fx:id=\"labelEinstellungenSprache\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert labelEinstellungenWochenarbeitszeit != null : "fx:id=\"labelEinstellungenWochenarbeitszeit\" was not injected: check your FXML file 'Sample.fxml'.";
@@ -255,13 +255,13 @@ public class SampleController {
 		assert choiceBoxEinstellungenWochenarbeitszeit != null : "fx:id=\"comboboxEinstellungenWochenarbeitszeit\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert textfieldEinstellungenErsteWarnstufe != null : "fx:id=\"textfieldEinstellungenErsteWarnstufe\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert textfieldEinstellungenZweiteWarnstufe != null : "fx:id=\"textfieldEinstellungenZweiteWarnstufe\" was not injected: check your FXML file 'Sample.fxml'.";
-		assert buttonEinstellungenEinstellungen‹bernehmen != null : "fx:id=\"buttonEinstellungenEinstellungen‹bernehmen\" was not injected: check your FXML file 'Sample.fxml'.";
+		assert buttonEinstellungenEinstellungen√úbernehmen != null : "fx:id=\"buttonEinstellungenEinstellungen√úbernehmen\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert labelEinstellungenNeuesPasswort1 != null : "fx:id=\"labelEinstellungenNeuesPasswort1\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert passwortfiedEinstellungenNeuesPasswort1 != null : "fx:id=\"passwortfiedEinstellungenNeuesPasswort1\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert labelEinstellungenNeuesPasswort2 != null : "fx:id=\"labelEinstellungenNeuesPasswort2\" was not injected: check your FXML file 'Sample.fxml'.";
 		assert passwortfiedEinstellungenNeuesPasswort2 != null : "fx:id=\"passwortfiedEinstellungenNeuesPasswort2\" was not injected: check your FXML file 'Sample.fxml'.";
 
-		// Hinterlegen der Wochenarbeitszeitstunden bei Minderj‰hrigen und Vollj‰hrigen
+		// Hinterlegen der Wochenarbeitszeitstunden bei Minderj√§hrigen und Vollj√§hrigen
 		Methoden md = new Methoden();
 
 		try {
@@ -308,7 +308,7 @@ public class SampleController {
 
 		birthdayDatePicker.setEditable(false);
 
-		// f¸llen der Kalender-Tabelle mit den Daten aus der worktime.xml
+		// f√ºllen der Kalender-Tabelle mit den Daten aus der worktime.xml
 		UserConfig uc = new UserConfig();
 		List<Person> zeiten = uc.getTimes();
 		Collections.reverse(zeiten);
@@ -349,11 +349,11 @@ public class SampleController {
 		});
 	}
 
-	// neuer Eintrag in die worktime.xml ¸ber die Hilfsklasse "Person" als
+	// neuer Eintrag in die worktime.xml √ºber die Hilfsklasse "Person" als
 	// gespiegeltes Tabellenelement
 	public void newPersonButtonPushed(ActionEvent event) throws IOException, ParseException {
 		UserConfig uc = new UserConfig();
-		// Code von newZeitenBerechnung, da leider nicht weiﬂ wie ich die Methode hier
+		// Code von newZeitenBerechnung, da leider nicht wei√ü wie ich die Methode hier
 		// aufrufen soll
 		Methoden m1 = new Methoden();
 		String s1 = comboBoxBeginnStunden.getSelectionModel().getSelectedItem();
@@ -506,12 +506,12 @@ public class SampleController {
 		}
 	}
 
-	// ƒnderungen der Nutzereinstellungen, werden in der user.xml abgespeichert
+	// √Ñnderungen der Nutzereinstellungen, werden in der user.xml abgespeichert
 	public void newSettingButtonPushed(ActionEvent event) throws IOException {
 		UserConfig uc = new UserConfig();
 		boolean settingsChanged = false;
 
-		// Passwort‰nderungen Werte pr¸fen und ggfs. neues Passwort setzen
+		// Passwort√§nderungen Werte pr√ºfen und ggfs. neues Passwort setzen
 		if (!passwortfiedEinstellungenAltesPasswort.getText().equals("")
 				&& !passwortfiedEinstellungenNeuesPasswort1.getText().equals("")
 				&& !passwortfiedEinstellungenNeuesPasswort2.getText().equals("")
@@ -612,7 +612,7 @@ public class SampleController {
 			window.show();
 		}
 
-		// Wochenarbeitszeit ‰ndern
+		// Wochenarbeitszeit √§ndern
 		if (choiceBoxEinstellungenWochenarbeitszeit.getSelectionModel().getSelectedItem() != null) {
 			String s = choiceBoxEinstellungenWochenarbeitszeit.getValue();
 			int wochenarbeitszeit = Integer.parseInt(s.substring(0, 2));
@@ -621,8 +621,8 @@ public class SampleController {
 			settingsChanged = true;
 		}
 
-		// Warnstufen f¸r Ampellogik ‰ndern falls Werte valide sind (erste Warnstufe
-		// kann nicht grˆﬂer sein wie zweite z.B.)
+		// Warnstufen f√ºr Ampellogik √§ndern falls Werte valide sind (erste Warnstufe
+		// kann nicht gr√∂√üer sein wie zweite z.B.)
 		if (!textfieldEinstellungenErsteWarnstufe.getText().equals("")) {
 			int fw = 0;
 			try {
@@ -732,7 +732,7 @@ public class SampleController {
 			}
 		}
 
-		// User-Feedback falls ƒnderungen gespeichert wurden
+		// User-Feedback falls √Ñnderungen gespeichert wurden
 		if (settingsChanged) {
 			if (uc.getLanguage() == 1) {
 				locale = new Locale("en");
@@ -749,7 +749,7 @@ public class SampleController {
 
 	}
 
-	// Methode um eine Zusatzpause buchen zu kˆnnen
+	// Methode um eine Zusatzpause buchen zu k√∂nnen
 	// wenn die Checkbox aktiviert ist, dann werden die Felder angezeigt
 	public void mehrPause() {
 
@@ -766,10 +766,10 @@ public class SampleController {
 
 	}
 
-	// Bei Auswahl der "Abwesenheit" erscheint ein zuvor ausgeblendetes Auswahlmen¸
-	// mit Dropdown f¸r
-	// Urlaub bzw Feiertag und ein Datepicker um das Datum zu w‰hlen
-	// zus‰tzlich wird immer "Urlaub" in der entsprechend eingestellten Sprache als
+	// Bei Auswahl der "Abwesenheit" erscheint ein zuvor ausgeblendetes Auswahlmen√º
+	// mit Dropdown f√ºr
+	// Urlaub bzw Feiertag und ein Datepicker um das Datum zu w√§hlen
+	// zus√§tzlich wird immer "Urlaub" in der entsprechend eingestellten Sprache als
 	// Standard gesetzt
 	public void abweseneheit() {
 		UserConfig uc = new UserConfig();
@@ -806,14 +806,14 @@ public class SampleController {
 
 	}
 
-	// Funktionalit‰t des Buttons "Logout" bei den Einstellungen.
+	// Funktionalit√§t des Buttons "Logout" bei den Einstellungen.
 	// Man springt aus dem Programm und es wird automatisch wieder der Loginbereich
 	// geladen.
 	// Es wird automatisch die entsprechend hinterlegte bzw. abgespeicherte Sprache
-	// gew‰hlt und geladen.
+	// gew√§hlt und geladen.
 	public void switchBack(ActionEvent event) throws IOException {
 
-		// Gew‰hrleistung, dass die richtige Sprache geladen wird
+		// Gew√§hrleistung, dass die richtige Sprache geladen wird
 		UserConfig uc = new UserConfig();
 		if (uc.getLanguage() == 0) {
 			locale = new Locale("de");
@@ -836,8 +836,8 @@ public class SampleController {
 		window.show();
 	}
 
-	// Wenn im Tab "Zeiterfassung" Arbeitsbeginn oder Arbeitsende ver‰ndert werden,
-	// wird dieser Code ausgef¸hrt
+	// Wenn im Tab "Zeiterfassung" Arbeitsbeginn oder Arbeitsende ver√§ndert werden,
+	// wird dieser Code ausgef√ºhrt
 	// welcher Arbeitsbeginn und Ende einliest und daraufhin das gesetzliche
 	// Arbeitsmaximum ausgibt.
 	public void newZeitenBerechnung(ActionEvent event) throws IOException, ParseException {
@@ -847,7 +847,7 @@ public class SampleController {
 		String s3 = comboBoxEndeStunden.getSelectionModel().getSelectedItem();
 		String s4 = comboBoxEndeMinuten.getSelectionModel().getSelectedItem();
 		String s5 = textfieldZeiterfassungZusatzpause.getText();
-		// Berechnung findet nur statt, wenn alle comboBoxen einen g¸ltigen Wert
+		// Berechnung findet nur statt, wenn alle comboBoxen einen g√ºltigen Wert
 		// enthalten
 		if (s1 != null && s2 != null && s3 != null && s4 != null) {
 			m1.setStartStunde(s1);
@@ -863,7 +863,7 @@ public class SampleController {
 	}
 
 	// schreibt die Gleitzeit ins Jahresfed
-	// je nachem welches Jahr ausgew‰hlt wurde (nichts=> aktuelles)
+	// je nachem welches Jahr ausgew√§hlt wurde (nichts=> aktuelles)
 	public void schreibeGleitzeitJahr(ActionEvent event) throws IOException, ParseException {
 		// auswahl Jahr
 		int year = LocalDate.now().getYear();
@@ -891,7 +891,7 @@ public class SampleController {
 		}
 
 		int ap = ampel(gleitzeitJahr);
-		switch (ap) {// f‰rben der Ampel
+		switch (ap) {// f√§rben der Ampel
 		case 0:
 			circleAmpelansichtColorYellow.setFill(Color.WHITE);
 			circleAmpelansichtColorRed.setFill(Color.WHITE);
@@ -910,15 +910,15 @@ public class SampleController {
 		}
 
 		// aufruf der Quartals und Monatsschreiben Methode
-		// sie ‰ndern sich auch jenachdem welches Jahr ausgew‰hlt wurde
+		// sie √§ndern sich auch jenachdem welches Jahr ausgew√§hlt wurde
 		schreibeGleitzeitMonat(event);
 		schreibeGleitzeitQuartal(event);
 		// Aufruf arbeitszeitverletzungsmethode
-		// pr¸ft f¸r das aktuell ausgew‰hlte Jahr
+		// pr√ºft f√ºr das aktuell ausgew√§hlte Jahr
 		arbeitszeitverletzung(year);
 	}
 
-	// pr¸ft was die Ampel anzeigen soll und gibt es dann zur¸ck
+	// pr√ºft was die Ampel anzeigen soll und gibt es dann zur√ºck
 	public int ampel(int gleitzeitJahr) {
 		int ap = 0;
 		UserConfig uc = new UserConfig();
@@ -928,13 +928,13 @@ public class SampleController {
 		} else if ((((double) gleitzeitJahr) / 60) > uc.getSecondWarning()) {
 			ap = 2;// rot
 		} else if ((((double) gleitzeitJahr) / 60) < uc.getFirstWarning()) {
-			ap = 0;// gr¸n
+			ap = 0;// gr√ºn
 		}
 		return ap;
 	}
 
 	// Schreiben der Gleitzeit in das Quartalsfeld
-	// jenachdem welches Quartal+Jahr ausgew‰hlt wurde (nichts=> aktuell)
+	// jenachdem welches Quartal+Jahr ausgew√§hlt wurde (nichts=> aktuell)
 	public void schreibeGleitzeitQuartal(ActionEvent event) throws IOException, ParseException {
 		// Quartalsauswahl
 		String month = "" + LocalDate.now().getMonthValue();
@@ -981,7 +981,7 @@ public class SampleController {
 	}
 
 	// Schreiben der Gleitzeit in das Monatsfeld
-	// je nachdem welcher Monat+Jahr ausgew‰hlt wurde (nichts=> aktuell)
+	// je nachdem welcher Monat+Jahr ausgew√§hlt wurde (nichts=> aktuell)
 	public int schreibeGleitzeitMonat(ActionEvent event) throws IOException, ParseException {
 		// Monatsauswahl
 		String month = "" + LocalDate.now().getMonthValue();
@@ -1020,7 +1020,7 @@ public class SampleController {
 	public int gleitzeitMonat(int year, int m) throws ParseException {
 
 		YearMonth yearMonthObject = YearMonth.of(year, m);
-		int daysInMonth = yearMonthObject.lengthOfMonth(); // Monatsl‰ne
+		int daysInMonth = yearMonthObject.lengthOfMonth(); // Monatsl√§ne
 		int gleitzeitMonat = 0;
 		// abrufen der Monatstage durch summieren der Tagesgleitzeit
 		for (int i = 1; i <= daysInMonth; i++) {
@@ -1049,7 +1049,7 @@ public class SampleController {
 			String[] str = m2.berechneArbeitszeitMitPause().split(":");// Arbeitszeit errechen
 			int zeit = Integer.parseInt(str[0]) * 60 + Integer.parseInt(str[1]);// in Minuten umwandeln
 
-			zeit = zeit - ((Integer.parseInt(uc.getWorktime()) / 5) * 60);// Abziehen der T‰glichenvertraglichen
+			zeit = zeit - ((Integer.parseInt(uc.getWorktime()) / 5) * 60);// Abziehen der T√§glichenvertraglichen
 																			// Arbeitsminuten
 			return zeit;
 
@@ -1066,10 +1066,10 @@ public class SampleController {
 		buttonKalenderSwitchToTimeViolation.setOnMouseClicked(e -> tabPaneAnsicht.getSelectionModel().select(3));
 	}
 
-	// Diese Methode pr¸ft ob eine Arbeitszeitverletzung im aktuellen / ausgew‰hlten
+	// Diese Methode pr√ºft ob eine Arbeitszeitverletzung im aktuellen / ausgew√§hlten
 	// Jahr vorliegt
-	// Daf¸r wird das Jahr Systematisch nach den Tagen auf arbeitszeitverletzungen
-	// ¸berpr¸ft
+	// Daf√ºr wird das Jahr Systematisch nach den Tagen auf arbeitszeitverletzungen
+	// √ºberpr√ºft
 	public void arbeitszeitverletzung(int year) {
 		textareaViolationtype.setText("");
 		textfieldViolationDay.setText("");
@@ -1191,7 +1191,7 @@ public class SampleController {
 				} // for Tag
 
 				// max 8h Durchschnitt
-				// DurchschnittlicheAz f¸r 24 Monate(6vorher und 6Nachher)
+				// DurchschnittlicheAz f√ºr 24 Monate(6vorher und 6Nachher)
 				if (arbeitsTage > 0) {
 					dMonat[m + 4] = (double) azMonat / (double) arbeitsTage;
 				}
@@ -1250,7 +1250,7 @@ public class SampleController {
 										buttonKalenderSwitchToTimeViolation.setStyle("-fx-background-color: orange");
 									} else {
 										textareaViolationtype.setText("Im Monat " + (i - 4)
-												+ " arbeiten Sie im Schnitt mehr als 8 Stunden. \nSie m¸ssen dies nicht melden aber achten sie darauf dies in den n‰chsten 6 Monaten auszugleichen.");
+												+ " arbeiten Sie im Schnitt mehr als 8 Stunden. \nSie m√ºssen dies nicht melden aber achten sie darauf dies in den n√§chsten 6 Monaten auszugleichen.");
 										buttonKalenderSwitchToTimeViolation.setVisible(true);
 										buttonKalenderSwitchToTimeViolation.setStyle("-fx-background-color: orange");
 									}
@@ -1272,7 +1272,7 @@ public class SampleController {
 							} else {
 
 								textareaViolationtype.setText(
-										"Sie haben innerhalb der letzten 6 Monate im Schnitt l‰nger als 8 Stunden gearbeitet"
+										"Sie haben innerhalb der letzten 6 Monate im Schnitt l√§nger als 8 Stunden gearbeitet"
 												+ (i - 4) + "Monat");
 								buttonKalenderSwitchToTimeViolation.setVisible(true);
 							}
@@ -1291,10 +1291,9 @@ public class SampleController {
 				int aevorherigerTag = -1;
 				for (int i = 1; i <= daysInMonth; i++) {
 					LocalDate date = LocalDate.of(year, m, i);
-
+					azVerletzung = "";
 					if (uc.getReported(date) == 0) {
 						String[] gz = uc.getDayData(date);
-						azVerletzung = "";
 						// Nachtruhe
 						if (gz[0].equals("Urlaub") || gz[0].equals("Feiertag") || gz[0].equals("public holiday")
 								|| gz[0].equals("vacation") || gz[0].equals("")) {// wenn Tag Urlaub || nicht gearbeitet
@@ -1343,7 +1342,7 @@ public class SampleController {
 									azVerletzung = azVerletzung + "\nWorked more than 8h!";
 								} else {
 									azVerletzung = azVerletzung
-											+ "\nMehr als 8h gearbeitet --> Verstoﬂ gegen das JArbSchG";
+											+ "\nMehr als 8h gearbeitet --> Versto√ü gegen das JArbSchG";
 								}
 
 								// Az Verletzung
